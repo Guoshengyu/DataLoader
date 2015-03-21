@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="1345532725">
+    <data-source source="LOCAL" name="SQL Server - ssb@116.236.160.182" uuid="17c9b4b9-34b9-45ff-af3c-1ccb7c81060c">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://116.236.160.182:10011;databaseName=ssb</jdbc-url>
+      <user-name>Sa</user-name>
+      <user-password>dfebdfcbdf92df92df9adf9fdf9cdf99df99</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="src:main:webapp:WEB-INF:hibernate.cfg.xml" uuid="ebf0b91a-0a5d-47d2-bc81-1e44eadcc7ca">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://116.236.160.182:10011;databaseName=ssb</jdbc-url>
+      <user-name>Sa</user-name>
+      <user-password>dfebdfcbdf92df92df9adf9fdf9cdf99df99</user-password>
+      <libraries>
+        <library>
+          <url>file://D:\app\sqljdbc4.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+  </component>
+</project>
+
