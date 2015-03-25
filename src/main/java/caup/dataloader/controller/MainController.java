@@ -1,5 +1,6 @@
 package caup.dataloader.controller;
 
+import caup.dataloader.transformer.reader.LuceneTest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -15,6 +16,10 @@ public class MainController {
     @RequestMapping(method = RequestMethod.GET)
     public String mainPageDisplay(ModelMap model){
         model.addAttribute("msg", "Main Page");
+
+        LuceneTest test = new LuceneTest();
+        test.test();
+
         return "MainPage";
     }
 }

@@ -1,0 +1,24 @@
+
+******************************************************************
+Excel Input Format(Unit??)
+
+---------------------------------------------------
+|Region |Index Name  |Unit??     |year1     |year2  |...|yearN
+---------------------------------------------------
+|String |String      |Unavailable|number    |number |...|number
+
+
+******************************************************************
+Web Page Selection Format
+-------------------------------------------------------------------------------------
+|Region |Database Index Name |Yearbook Index Name1 |Yearbook Index Name1     |...|Yearbook Index NameN
+-------------------------------------------------------------------------------------
+|String |String              |String               |String                   |...|String
+
+******************************************************************
+Excel Output Format
+
+-------------------------------------------------------------------------------------
+|Region |Databse Index Name  |Yearbook Index Name |year1     |year2  |...|yearN
+-------------------------------------------------------------------------------------
+|String |String              |String               |number    |number |...|number
