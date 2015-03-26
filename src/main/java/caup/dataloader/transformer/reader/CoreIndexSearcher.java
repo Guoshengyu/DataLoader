@@ -26,7 +26,7 @@ import java.util.List;
  */
 public class CoreIndexSearcher {
 
-    static int TOP_SCORE_YEARBOOK_INDEX = 10;
+    static int TOP_SCORE_YEARBOOK_INDEX = 15;
     static String FIELD_NAME = "index-name";
     List<String> yearBookIndexList;
     String databaseIndex;
@@ -69,7 +69,7 @@ public class CoreIndexSearcher {
      */
     private Directory getLuceneIndexDirectory() throws IOException{
         RAMDirectory directory = new RAMDirectory();
-        IKAnalyzer analyzer = new IKAnalyzer(true);
+        IKAnalyzer analyzer = new IKAnalyzer();
         IndexWriterConfig iwc = new IndexWriterConfig(Version.LUCENE_43,analyzer);
         IndexWriter indexWriter = new IndexWriter(directory, iwc);
 

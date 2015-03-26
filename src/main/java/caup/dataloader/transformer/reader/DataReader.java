@@ -1,6 +1,7 @@
 package caup.dataloader.transformer.reader;
 
 import caup.dataloader.transformer.reader.DataModel.InputDataFormat;
+import caup.dataloader.util.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 
 import java.io.FileInputStream;
@@ -45,6 +46,11 @@ public class DataReader {
         return ret;
     }
 
+    /**
+     *
+     * Read one row from the excel to set the InputDataFormat data model with the first row defined as the header
+     *
+     */
     private InputDataFormat getInputDataFromRow(Row row, Row headerRow){
         Cell yearbookIndexCell = null;
         Cell yearbookUnitCell = null;
@@ -59,40 +65,19 @@ public class DataReader {
         ret.setUnit((yearbookUnitCell == null || yearbookUnitCell.getStringCellValue().isEmpty()) ? "NULL" : yearbookUnitCell.getStringCellValue());
         for(int columnNum = yearbookValueStartColumn; columnNum != row.getLastCellNum(); ++columnNum){
             yearbookValueCell = row.getCell(columnNum);
-           // headerRow.getCell(columnNum).getStringCellValue();
             if(yearbookValueCell.getCellType() == Cell.CELL_TYPE_STRING) {
                 try {
                     yearbookValue.put(headerRow.getCell(columnNum).getStringCellValue(), yearbookValueCell.getStringCellValue() == null || yearbookValueCell.getStringCellValue().equals("null") ?
-                            0 : Double.valueOf(replaceSpecialtyStr(yearbookValueCell.getStringCellValue().trim().replaceAll(" ", ""), "&|[\uFE30-\uFFA0]|‘’|“”", "")));
+                            0 : Double.valueOf(StringUtils.replaceSpecialtyStr(yearbookValueCell.getStringCellValue().trim().replaceAll(" ", ""), StringUtils.pattern, "")));
                 }catch (NumberFormatException e){
                     yearbookValue.put(headerRow.getCell(columnNum).getStringCellValue(), 0.0);
                 }
             }
             else if (yearbookValueCell.getCellType() == Cell.CELL_TYPE_NUMERIC)
-                yearbookValue.put(headerRow.getCell(columnNum).getStringCellValue(), yearbookValueCell.getNumericCellValue() == 0? 0: yearbookValueCell.getNumericCellValue());
+                yearbookValue.put(headerRow.getCell(columnNum).getStringCellValue(), yearbookValueCell.getNumericCellValue() == 0.0 ? 0.0: yearbookValueCell.getNumericCellValue());
         }
         ret.setyValueMap(yearbookValue);
         return ret;
-    }
-
-    private  String replaceSpecialtyStr(String str,String pattern,String replace){
-        if(isBlankOrNull(pattern))
-            pattern="\\s*|\t|\r|\n";//去除字符串中空格、换行、制表
-        if(isBlankOrNull(replace))
-            replace="";
-        return Pattern.compile(pattern).matcher(str).replaceAll(replace);
-
-    }
-
-    public  boolean isBlankOrNull(String str){
-        if(null==str)return true;
-        //return str.length()==0?true:false;
-        return str.length()==0;
-    }
-    /**清除数字和空格*/
-    public   String cleanBlankOrDigit(String str){
-        if(isBlankOrNull(str))return "null";
-        return Pattern.compile("\\d|\\s").matcher(str).replaceAll("");
     }
 
 }
