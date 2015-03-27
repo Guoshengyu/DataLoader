@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d195d5c-2ff6-4c18-ab1e-d014f0a03e6c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/caup/dataloader/controller/SearchIndexController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/caup/dataloader/controller/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/caup/dataloader/controller/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DataLoader.iws" />
@@ -1089,7 +1086,7 @@
       <workItem from="1427245915062" duration="13078000" />
       <workItem from="1427333253266" duration="13665000" />
       <workItem from="1427373650860" duration="3478000" />
-      <workItem from="1427465208647" duration="3819000" />
+      <workItem from="1427465208647" duration="3898000" />
     </task>
     <task id="LOCAL-00001" summary="Archetype with Spring 4.0.6 + Hibernate 4.2.2&#10;&#10;Database connection Established">
       <created>1426940926522</created>
@@ -1115,11 +1112,15 @@
       <created>1427379136659</created>
       <updated>1427379136659</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Convert the search result into JSon and display it on the page">
+      <created>1427469252895</created>
+      <updated>1427469252895</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93747000" />
+    <option name="totallyTimeSpent" value="93826000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="59" y="-8" width="1549" height="916" extended-state="6" />
@@ -1179,7 +1180,8 @@
     <MESSAGE value="Add DataReader read and parse the yearbook File into defined data model" />
     <MESSAGE value="Use Lucene with ik-analyzer to search the yearbook index based on the input from the excel" />
     <MESSAGE value="Put full information into Selection data format" />
-    <option name="LAST_COMMIT_MESSAGE" value="Put full information into Selection data format" />
+    <MESSAGE value="Convert the search result into JSon and display it on the page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Convert the search result into JSon and display it on the page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
