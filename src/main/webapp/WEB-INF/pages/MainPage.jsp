@@ -32,6 +32,14 @@
         </form>
     </div>
     <div>
+        <h2> Test Radio checkbox</h2>
+        <div id="search-indicator">
+
+        </div>
+        <input type="radio" name="radiobutton" value="radiobutton" checked> 喜欢
+        <input type="radio" name="radiobutton" value="radiobutton"> 不喜欢
+        <input type="radio" name="radiobutton" value="radiobutton"> 无所谓<br>
+
         <h2>Test Index List</h2>
         <div id="test-indicator" >
 
@@ -42,6 +50,7 @@
 <script type="text/javascript">
 
     var indexList;
+    var searchResultList;
 
     function getIndexList() {
         $.get("getData/getIndicator", function (data, status) {
@@ -53,6 +62,22 @@
             })
         });
     }
+
+    function getSearchResultList(){
+        $.get("searchIndex/getResult", function(data, status){
+            searchResultList = data;
+           // $("#search-indicator").html("hd中文fs");
+            $.each(searchResultList.IndexList, function(index, item){
+                $("#search-indicator").append(item.Region + "  " + item.DBIndex + " " + item.DBUnit +  "<br>");
+                $.each(item.ybIndexList, function(index1, item1){
+                    $("#search-indicator").append(item1.ybIndex + "  " + item1.ybUnit  +  " | ");
+                });
+                $("#search-indicator").append("<br>");
+            })
+        });
+    }
+
+    getSearchResultList();
     getIndexList();
 
 </script>
