@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d195d5c-2ff6-4c18-ab1e-d014f0a03e6c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DataLoader.iws" />
@@ -27,70 +28,48 @@
     <favorites_list name="DataLoader" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.36709824">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="MainController.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/controller/MainController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="682">
-                  <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SelectionDataFormat.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/DataModel/SelectionDataFormat.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="880">
-                  <caret line="0" column="53" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="IndicatorController.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/controller/IndicatorController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1166">
-                  <caret line="26" column="17" selection-start-line="24" selection-start-column="3" selection-end-line="26" selection-end-column="17" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MainPage.jsp" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="4.90625" vertical-offset="1201" max-vertical-offset="1980">
-                  <caret line="76" column="11" selection-start-line="76" selection-start-column="11" selection-end-line="76" selection-end-column="11" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="SearchIndexController.java" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/controller/SearchIndexController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="1.9060403" vertical-offset="1454" max-vertical-offset="2310">
-                  <caret line="108" column="34" selection-start-line="108" selection-start-column="22" selection-end-line="108" selection-end-column="34" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="method#searchForAllIndex#0;class#SearchIndexController#0" expanded="false" />
-                    <element signature="method#searchFromInputDataModel#0;class#SearchIndexController#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="MainController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/controller/MainController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="682">
+              <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SelectionDataFormat.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/DataModel/SelectionDataFormat.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1210">
+              <caret line="0" column="53" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndicatorController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/controller/IndicatorController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="1166">
+              <caret line="26" column="17" selection-start-line="24" selection-start-column="3" selection-end-line="26" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainPage.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.73170733" vertical-offset="1692" max-vertical-offset="2728">
+              <caret line="96" column="74" selection-start-line="96" selection-start-column="74" selection-end-line="96" selection-end-column="74" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -130,8 +109,8 @@
         <option value="$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/CoreIndexSearcher.java" />
         <option value="$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/DataModel/SelectionDataFormat.java" />
         <option value="$PROJECT_DIR$/src/main/java/caup/dataloader/controller/MainController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/caup/dataloader/controller/SearchIndexController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp" />
       </list>
     </option>
   </component>
@@ -222,10 +201,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="59" />
+    <option name="x" value="1592" />
     <option name="y" value="-8" />
-    <option name="width" value="1549" />
-    <option name="height" value="916" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -944,12 +923,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
-      <method />
-    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -968,6 +941,12 @@
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <configuration default="false" name="Tomcat 7.0.59" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.59" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
@@ -1086,7 +1065,8 @@
       <workItem from="1427245915062" duration="13078000" />
       <workItem from="1427333253266" duration="13665000" />
       <workItem from="1427373650860" duration="3478000" />
-      <workItem from="1427465208647" duration="3970000" />
+      <workItem from="1427465208647" duration="4037000" />
+      <workItem from="1427590794240" duration="16804000" />
     </task>
     <task id="LOCAL-00001" summary="Archetype with Spring 4.0.6 + Hibernate 4.2.2&#10;&#10;Database connection Established">
       <created>1426940926522</created>
@@ -1120,14 +1100,18 @@
       <created>1427469307231</created>
       <updated>1427469307231</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Convert the search result into JSon and display it on the page">
+      <created>1427469377652</created>
+      <updated>1427469377652</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93898000" />
+    <option name="totallyTimeSpent" value="110769000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="59" y="-8" width="1549" height="916" extended-state="6" />
+    <frame x="1592" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1146,15 +1130,15 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32920793" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21761134" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6398515" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14350946" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.7660891" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.114583336" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36032388" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941943" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1358,15 +1342,15 @@
           <ID>MAVEN</ID>
           <OriginalElement>com.springapp:DataLoader:1.0-SNAPSHOT</OriginalElement>
           <nodes>
-            <node x="" y="">org.springframework:spring-web:jar:4.0.6.RELEASE/org.springframework:spring-aop:jar:4.0.6.RELEASE</node>
             <node x="" y="">org.springframework:spring-web:jar:4.0.6.RELEASE/org.springframework:spring-context:jar:4.0.6.RELEASE/org.springframework:spring-core:jar:4.0.6.RELEASE</node>
-            <node x="" y="">org.springframework:spring-test:jar:4.0.6.RELEASE/org.springframework:spring-core:jar:4.0.6.RELEASE</node>
+            <node x="" y="">org.springframework:spring-web:jar:4.0.6.RELEASE/org.springframework:spring-aop:jar:4.0.6.RELEASE</node>
             <node x="" y="">org.springframework:spring-tx:jar:4.0.6.RELEASE/org.springframework:spring-beans:jar:4.0.6.RELEASE</node>
+            <node x="" y="">org.springframework:spring-test:jar:4.0.6.RELEASE/org.springframework:spring-core:jar:4.0.6.RELEASE</node>
             <node x="" y="">org.springframework:spring-webmvc:jar:4.0.6.RELEASE/org.springframework:spring-expression:jar:4.0.6.RELEASE</node>
-            <node x="" y="">org.springframework:spring-core:jar:4.0.6.RELEASE/commons-logging:commons-logging:jar:1.1.3</node>
             <node x="" y="">org.springframework:spring-web:jar:4.0.6.RELEASE/org.springframework:spring-context:jar:4.0.6.RELEASE/org.springframework:spring-aop:jar:4.0.6.RELEASE</node>
-            <node x="" y="">org.springframework:spring-web:jar:4.0.6.RELEASE/org.springframework:spring-context:jar:4.0.6.RELEASE/org.springframework:spring-expression:jar:4.0.6.RELEASE</node>
+            <node x="" y="">org.springframework:spring-core:jar:4.0.6.RELEASE/commons-logging:commons-logging:jar:1.1.3</node>
             <node x="" y="">javax.servlet.jsp:jsp-api:jar:2.1</node>
+            <node x="" y="">org.springframework:spring-web:jar:4.0.6.RELEASE/org.springframework:spring-context:jar:4.0.6.RELEASE/org.springframework:spring-expression:jar:4.0.6.RELEASE</node>
             <node x="" y="">org.springframework:spring-orm:jar:4.0.6.RELEASE/org.springframework:spring-jdbc:jar:4.0.6.RELEASE/org.springframework:spring-core:jar:4.0.6.RELEASE</node>
             <node x="" y="">org.springframework:spring-webmvc:jar:4.0.6.RELEASE/org.springframework:spring-core:jar:4.0.6.RELEASE</node>
             <node x="" y="">org.springframework:spring-orm:jar:4.0.6.RELEASE</node>
@@ -1382,20 +1366,20 @@
             <node x="" y="">org.springframework:spring-orm:jar:4.0.6.RELEASE/org.springframework:spring-jdbc:jar:4.0.6.RELEASE</node>
             <node x="" y="">org.springframework:spring-webmvc:jar:4.0.6.RELEASE/org.springframework:spring-web:jar:4.0.6.RELEASE</node>
             <node x="" y="">org.springframework:spring-web:jar:4.0.6.RELEASE/org.springframework:spring-aop:jar:4.0.6.RELEASE/aopalliance:aopalliance:jar:1.0</node>
-            <node x="" y="">org.springframework:spring-test:jar:4.0.6.RELEASE</node>
             <node x="" y="">org.springframework:spring-orm:jar:4.0.6.RELEASE/org.springframework:spring-jdbc:jar:4.0.6.RELEASE/org.springframework:spring-beans:jar:4.0.6.RELEASE</node>
-            <node x="" y="">org.springframework:spring-core:jar:4.0.6.RELEASE</node>
-            <node x="" y="">org.springframework:spring-web:jar:4.0.6.RELEASE/org.springframework:spring-context:jar:4.0.6.RELEASE</node>
-            <node x="" y="">org.springframework:spring-web:jar:4.0.6.RELEASE/org.springframework:spring-core:jar:4.0.6.RELEASE</node>
-            <node x="" y="">javax.servlet:servlet-api:jar:2.5</node>
+            <node x="" y="">org.springframework:spring-test:jar:4.0.6.RELEASE</node>
             <node x="" y="">org.springframework:spring-webmvc:jar:4.0.6.RELEASE</node>
+            <node x="" y="">javax.servlet:servlet-api:jar:2.5</node>
+            <node x="" y="">org.springframework:spring-web:jar:4.0.6.RELEASE/org.springframework:spring-core:jar:4.0.6.RELEASE</node>
+            <node x="" y="">org.springframework:spring-web:jar:4.0.6.RELEASE/org.springframework:spring-context:jar:4.0.6.RELEASE</node>
+            <node x="" y="">org.springframework:spring-core:jar:4.0.6.RELEASE</node>
             <node x="" y="">org.springframework:spring-orm:jar:4.0.6.RELEASE/org.springframework:spring-beans:jar:4.0.6.RELEASE</node>
             <node x="" y="">org.springframework:spring-web:jar:4.0.6.RELEASE/org.springframework:spring-beans:jar:4.0.6.RELEASE</node>
             <node x="" y="">com.springapp:DataLoader:1.0-SNAPSHOT</node>
             <node x="" y="">org.springframework:spring-web:jar:4.0.6.RELEASE/org.springframework:spring-beans:jar:4.0.6.RELEASE/org.springframework:spring-core:jar:4.0.6.RELEASE</node>
             <node x="" y="">org.springframework:spring-tx:jar:4.0.6.RELEASE</node>
-            <node x="" y="">org.springframework:spring-webmvc:jar:4.0.6.RELEASE/org.springframework:spring-beans:jar:4.0.6.RELEASE</node>
             <node x="" y="">org.springframework:spring-webmvc:jar:4.0.6.RELEASE/org.springframework:spring-expression:jar:4.0.6.RELEASE/org.springframework:spring-core:jar:4.0.6.RELEASE</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:4.0.6.RELEASE/org.springframework:spring-beans:jar:4.0.6.RELEASE</node>
             <node x="" y="">org.springframework:spring-orm:jar:4.0.6.RELEASE/org.springframework:spring-core:jar:4.0.6.RELEASE</node>
           </nodes>
           <notes />
@@ -1567,7 +1551,7 @@
         <state vertical-scroll-proportion="-0.10911809" vertical-offset="645" max-vertical-offset="1738">
           <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
           <folding>
-            <element signature="e#2027#2043#0" expanded="true" />
+            <element signature="e#2027#2043#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1577,7 +1561,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122">
           <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
           <folding>
-            <element signature="e#308#309#0" expanded="true" />
+            <element signature="e#308#309#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1598,10 +1582,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/controller/SearchIndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36979166" vertical-offset="1454" max-vertical-offset="2310">
+          <caret line="108" column="34" selection-start-line="108" selection-start-column="22" selection-end-line="108" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#searchForAllIndex#0;class#SearchIndexController#0" expanded="false" />
+            <element signature="method#searchFromInputDataModel#0;class#SearchIndexController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/DataModel/SelectionDataFormat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="880">
+          <caret line="0" column="53" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/controller/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="682">
-          <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
+          <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -1614,31 +1618,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/DataModel/SelectionDataFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="880">
-          <caret line="0" column="53" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.90625" vertical-offset="1201" max-vertical-offset="1980">
-          <caret line="76" column="11" selection-start-line="76" selection-start-column="11" selection-end-line="76" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.73170733" vertical-offset="1692" max-vertical-offset="2728">
+          <caret line="96" column="74" selection-start-line="96" selection-start-column="74" selection-end-line="96" selection-end-column="74" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/controller/SearchIndexController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.9060403" vertical-offset="1454" max-vertical-offset="2310">
-          <caret line="108" column="34" selection-start-line="108" selection-start-column="22" selection-end-line="108" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#searchForAllIndex#0;class#SearchIndexController#0" expanded="false" />
-            <element signature="method#searchFromInputDataModel#0;class#SearchIndexController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

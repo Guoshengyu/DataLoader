@@ -33,13 +33,11 @@
     </div>
     <div>
         <h2> Test Radio checkbox</h2>
-        <div id="search-indicator">
+        <table id="search-indicator">
 
-        </div>
-        <input type="radio" name="radiobutton" value="radiobutton" checked> 喜欢
-        <input type="radio" name="radiobutton" value="radiobutton"> 不喜欢
-        <input type="radio" name="radiobutton" value="radiobutton"> 无所谓<br>
 
+        </table>
+        <button class="btn"  onclick="generateSelectionResultJson()">Confirm</button>
         <h2>Test Index List</h2>
         <div id="test-indicator" >
 
@@ -51,6 +49,9 @@
 
     var indexList;
     var searchResultList;
+    var indexCount;
+    var selectionList;
+    var selectionResultJson;
 
     function getIndexList() {
         $.get("getData/getIndicator", function (data, status) {
@@ -66,19 +67,52 @@
     function getSearchResultList(){
         $.get("searchIndex/getResult", function(data, status){
             searchResultList = data;
-           // $("#search-indicator").html("hd中文fs");
             $.each(searchResultList.IndexList, function(index, item){
-                $("#search-indicator").append(item.Region + "  " + item.DBIndex + " " + item.DBUnit +  "<br>");
+                //Selection Tag Start
+                $("#search-indicator").append("<tr> <td>"  + item.Region + "  " + item.DBIndex + " " + item.DBUnit +  "</td> <td><select id = \"search-result-selection-" + index + "\">");
                 $.each(item.ybIndexList, function(index1, item1){
-                    $("#search-indicator").append(item1.ybIndex + "  " + item1.ybUnit  +  " | ");
+                    //Add selector options
+                   var selectorObj = document.getElementById("search-result-selection-" + index);
+                   selectorObj.options.add(new Option(item1.ybIndex + " | 单位：" + item1.ybUnit, index1));
+                   selectorObj.options[0].selected = true;
+                    if(index1 == item.ybIndexList.length - 1){
+                        selectorObj.options.add(new Option("没有选项"));
+                    }
                 });
-                $("#search-indicator").append("<br>");
+                //Selection Tag End
+                $("#search-indicator").append("</select></td></tr>");
+                indexCount = index + 1;
             })
         });
     }
 
+    function getSelectionList(){
+        var tempSelectionList = [];
+        for(var i = 0; i != indexCount; i++){
+            var selectorObj = document.getElementById("search-result-selection-" + i);
+            var optionValue = selectorObj.options[selectorObj.selectedIndex].text;
+            if(!optionValue == "没有选项"){
+                tempSelectionList.push({"YBIndex": optionValue.substr(0, optionValue.indexOf("|") - 1), "YBUnit": optionValue.substr(optionValue.indexOf("单位") + 3)});
+            }else{
+                tempSelectionList.push({"YBIndex": "NULL", "YBUnit": "NULL"});
+            }
+        }
+        //console.log(JSON.stringify(tempSelectionList));
+        selectionList = JSON.parse(JSON.stringify(tempSelectionList));
+    }
+
+    function generateSelectionResultJson(){
+        getSelectionList();
+        var tempRetResultList = [];
+        for(var i = 0; i != selectionList.length && i != searchResultList.length; ++i){
+            tempRetResultList.push({"DBIndex":searchResultList.IndexList[i].DBIndex, "DBUnit":searchResultList.IndexList[i].DBUnit, "YBIndex": selectionList[i].YBIndex, "YBUnit":selectionList[i].YBUnit});
+        }
+        selectionResultJson = JSON.parse(JSON.stringify(tempRetResultList));
+        console.log(JSON.stringify(tempRetResultList));
+    }
+
     getSearchResultList();
-    getIndexList();
+    //getIndexList();
 
 </script>
 </html>
