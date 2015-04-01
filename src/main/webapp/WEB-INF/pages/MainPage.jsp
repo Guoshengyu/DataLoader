@@ -26,23 +26,17 @@
 
     ${msg}
     <div>
-        <form id = "file-upload-form" method="post">
-            <input type="file"/>
-            <button class="btn" type="submit">上传数据文件</button>
+        <form id = "file-upload-form"  method = "post" action = "file/upload" enctype="multipart/form-data">
+            <input type="file" name="upload-file" id="upload-file"/>
+            <button class="btn"  onclick="uploadFile()">上传</button>
         </form>
     </div>
     <div>
         <h2> Test Radio checkbox</h2>
         <table id="search-indicator">
-
-
         </table>
         <button class="btn"  onclick="generateSelectionResultJson()">Confirm</button>
-        <h2>Test Index List</h2>
-        <div id="test-indicator" >
 
-
-        </div>
     </div>
 </body>
 <script type="text/javascript">
@@ -90,15 +84,30 @@
         var tempSelectionList = [];
         for(var i = 0; i != indexCount; i++){
             var selectorObj = document.getElementById("search-result-selection-" + i);
-            var optionValue = selectorObj.options[selectorObj.selectedIndex].text;
-            if(!optionValue == "没有选项"){
-                tempSelectionList.push({"YBIndex": optionValue.substr(0, optionValue.indexOf("|") - 1), "YBUnit": optionValue.substr(optionValue.indexOf("单位") + 3)});
+            var option = selectorObj.options[selectorObj.selectedIndex];
+            if(option != null && option.text != "没有选项"){
+                tempSelectionList.push({"YBIndex": option.text.substr(0, option.text.indexOf("|") - 1), "YBUnit": option.text.substr(option.text.indexOf("单位") + 3)});
             }else{
                 tempSelectionList.push({"YBIndex": "NULL", "YBUnit": "NULL"});
             }
         }
         //console.log(JSON.stringify(tempSelectionList));
         selectionList = JSON.parse(JSON.stringify(tempSelectionList));
+    }
+
+    function postSelectionResult(obj){
+
+        $.ajax({
+            type: "POST",
+            url: "generateResult/writeResult",
+            contentType: "application/json; charset=utf-8",
+            dataType: "application/json",
+            data: JSON.stringify(obj),
+            //data: JSON.stringify(selectionResultJson),
+            success: function(jsonResult){
+                console.log("sucess!");
+            }
+        });
     }
 
     function generateSelectionResultJson(){
@@ -108,11 +117,31 @@
             tempRetResultList.push({"DBIndex":searchResultList.IndexList[i].DBIndex, "DBUnit":searchResultList.IndexList[i].DBUnit, "YBIndex": selectionList[i].YBIndex, "YBUnit":selectionList[i].YBUnit});
         }
         selectionResultJson = JSON.parse(JSON.stringify(tempRetResultList));
-        console.log(JSON.stringify(tempRetResultList));
+        console.log(JSON.stringify(selectionResultJson));
+        postSelectionResult(selectionResultJson);
     }
 
-    getSearchResultList();
+    function uploadFile(){
+        var oMyForm = new FormData();
+        oMyForm.append("file", upload-file.files[0]);
+
+        $.ajax({
+            url: "file/upload",
+            data: oMyForm,
+            dataType: 'text',
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function(data){
+                //  $('#result').html(data+ " uploaded by FormData!");
+             //   $('#result').html(data);
+                console.log(data);
+            }
+        });
+    }
+   // getSearchResultList();
     //getIndexList();
 
 </script>
 </html>
+1

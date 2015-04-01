@@ -43,9 +43,25 @@ public class DataReader {
             InputDataFormat inputDataFormat = getInputDataFromRow(row, firstRow);
             ret.add(inputDataFormat);
         }
+        inputStream.close();
         return ret;
     }
 
+    public List<String> getHeader() throws Exception{
+        InputStream inputStream = new FileInputStream(filePath);
+        Workbook wb = WorkbookFactory.create(inputStream);
+        List<String> ret = new ArrayList<String>();
+
+        Sheet sheet = wb.getSheetAt(0);
+        Row firstRow = sheet.getRow(0);
+        for (int columnIndex = yearbookValueStartColumn + 1; columnIndex != firstRow.getLastCellNum(); ++columnIndex) {
+            Cell cell = firstRow.getCell(columnIndex);
+            String str = cell.getStringCellValue();
+            ret.add(str);
+        }
+        inputStream.close();
+        return ret;
+    }
     /**
      *
      * Read one row from the excel to set the InputDataFormat data model with the first row defined as the header

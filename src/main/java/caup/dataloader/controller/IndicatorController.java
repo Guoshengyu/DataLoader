@@ -27,7 +27,7 @@ public class IndicatorController {
     @ResponseBody
     public String getIndicatorList(){
         DataWrapper<List<DimIndicator3Entity>> result =  selectionService.getIndicator();
-        System.out.println(result);
+   //     System.out.println(result);
         return indicatorConverToJson(result.getData()).toString();
     }
 
@@ -49,7 +49,7 @@ public class IndicatorController {
                 dataObject.put("Unit", "");
             indexArray.put(dataObject);
         }
-        ret.put("ceshi", "测试");
+       // ret.put("ceshi", "测试");
         ret.put("IndexList", indexArray);
 
         return ret;

@@ -7,6 +7,7 @@ import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.queryparser.xml.ParserException;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
@@ -53,7 +54,16 @@ public class CoreIndexSearcher {
         DirectoryReader reader = DirectoryReader.open(getLuceneIndexDirectory());
         IndexSearcher searcher = new IndexSearcher(reader);
         QueryParser queryParser = new QueryParser(Version.LUCENE_43, FIELD_NAME, new IKAnalyzer());
-        Query query = queryParser.parse(databaseIndex);
+
+       // Query query =queryParser.escape("-&|!(){}[]^~*?:\\ ");
+                //= queryParser.parse(QueryParser.escape("-&|!(){}[]^~*?:\\ "));
+        Query query;
+       /* if(databaseIndex.lastIndexOf(")") == databaseIndex.length() - 1) {
+            query = queryParser.parse(databaseIndex.substring(0, databaseIndex.lastIndexOf("(")));
+        }else {
+            query = queryParser.parse(databaseIndex);
+        }*/
+        query = safe_query_parser(queryParser, databaseIndex);
         TopDocs topDocs = searcher.search(query, TOP_SCORE_YEARBOOK_INDEX);
         List<String> ret = new ArrayList<String>();
         for(ScoreDoc match: topDocs.scoreDocs){
@@ -61,6 +71,25 @@ public class CoreIndexSearcher {
             ret.add(document.getField(FIELD_NAME).stringValue());
         }
         return  ret;
+    }
+
+    private Query safe_query_parser(QueryParser qp, String raw_query)throws org.apache.lucene.queryparser.classic.ParseException {
+        Query q;
+        try {
+            q = qp.parse(raw_query);
+        } catch(org.apache.lucene.queryparser.classic.ParseException e) {
+            q = null;
+        }
+        if(q==null) {
+            String cooked;
+            // consider changing this "" to " "
+            cooked = raw_query.replace("("," ");
+            cooked = cooked.replace(")", " ");
+            cooked = cooked.replace("/", " ");
+            System.out.println("Parsing ERROR!!   " + cooked);
+            q = qp.parse(cooked);
+        }
+        return q;
     }
     /**
      *  We use RAM directory(index in memory) to create index due to the small size of text yearbook Index

@@ -55,14 +55,13 @@ public class SearchIndexController {
 
     private void searchForAllIndex(List<SelectionDataFormat> ret, List<DimIndicator3Entity> dimIndicator3EntityList, List<InputDataFormat> inputDataFormatList, Map<String, String> orgIndexMap) throws Exception {
         SelectionDataFormat selectionDataFormat;
-        for(int i = 0; i != 30; i++) {
-
-            CoreIndexSearcher coreIndexSearcher = new CoreIndexSearcher(dimIndicator3EntityList.get(i).getIndexName(), new ArrayList<String>(orgIndexMap.keySet()));
+   //     for(int i = 0; i != 30; i++) {
+        for(int i = 0; i != dimIndicator3EntityList.size(); ++i){
+            CoreIndexSearcher coreIndexSearcher = new CoreIndexSearcher(dimIndicator3EntityList.get(i).getIndexName().trim(), new ArrayList<String>(orgIndexMap.keySet()));
             List<String> result = coreIndexSearcher.getTopYearbookIndex();
             // System.out.println(dimIndicator3EntityList.get(i).getIndexName());
             Map<String, String> map =new HashMap<String, String>();
             for(String str: result){
-
                 map.put(orgIndexMap.get(str), searchFromInputDataModel(inputDataFormatList,orgIndexMap.get(str)).getUnit());
             }
             selectionDataFormat = new SelectionDataFormat();
@@ -70,6 +69,7 @@ public class SearchIndexController {
             selectionDataFormat.setDatabaseUnit(dimIndicator3EntityList.get(i).getUnit());
             selectionDataFormat.setYearbookIndexUnitMap(map);
 
+            System.out.println(dimIndicator3EntityList.get(i).getIndexName());
             for(String str: result)
                 System.out.print(orgIndexMap.get(str) + " | ");
             System.out.println();
