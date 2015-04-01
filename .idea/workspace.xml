@@ -2,27 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d195d5c-2ff6-4c18-ab1e-d014f0a03e6c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/DataWriter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/caup/dataloader/controller/FileIOController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_4_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_4_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_4_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/caup/dataloader/controller/ResultGenerateController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/DataModel/SelectionResultFormat.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/error_fileupload.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/CoreIndexSearcher.java" afterPath="$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/CoreIndexSearcher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataLoader.iml" afterPath="$PROJECT_DIR$/DataLoader.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/DataLoader_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/DataLoader_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/DataReader.java" afterPath="$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/DataReader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/caup/dataloader/controller/IndicatorController.java" afterPath="$PROJECT_DIR$/src/main/java/caup/dataloader/controller/IndicatorController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/caup/dataloader/controller/SearchIndexController.java" afterPath="$PROJECT_DIR$/src/main/java/caup/dataloader/controller/SearchIndexController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DataLoader.iws" />
@@ -834,7 +813,7 @@
       <workItem from="1427590794240" duration="16962000" />
       <workItem from="1427765400205" duration="6208000" />
       <workItem from="1427785705766" duration="16248000" />
-      <workItem from="1427810948381" duration="17575000" />
+      <workItem from="1427810948381" duration="17749000" />
     </task>
     <task id="LOCAL-00001" summary="Archetype with Spring 4.0.6 + Hibernate 4.2.2&#10;&#10;Database connection Established">
       <created>1426940926522</created>
@@ -876,11 +855,15 @@
       <created>1427717948882</created>
       <updated>1427717948882</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add File Uploading funciton">
+      <created>1427862417665</created>
+      <updated>1427862417665</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150958000" />
+    <option name="totallyTimeSpent" value="151132000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1592" y="-8" width="1936" height="1096" extended-state="6" />
@@ -942,7 +925,8 @@
     <MESSAGE value="Put full information into Selection data format" />
     <MESSAGE value="Convert the search result into JSon and display it on the page" />
     <MESSAGE value="Get the result in the selector and generate a json object with DB index and selected YB index" />
-    <option name="LAST_COMMIT_MESSAGE" value="Get the result in the selector and generate a json object with DB index and selected YB index" />
+    <MESSAGE value="Add File Uploading funciton" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add File Uploading funciton" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
