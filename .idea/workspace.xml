@@ -813,7 +813,7 @@
       <workItem from="1427590794240" duration="16962000" />
       <workItem from="1427765400205" duration="6208000" />
       <workItem from="1427785705766" duration="16248000" />
-      <workItem from="1427810948381" duration="17749000" />
+      <workItem from="1427810948381" duration="17771000" />
     </task>
     <task id="LOCAL-00001" summary="Archetype with Spring 4.0.6 + Hibernate 4.2.2&#10;&#10;Database connection Established">
       <created>1426940926522</created>
@@ -859,11 +859,15 @@
       <created>1427862417665</created>
       <updated>1427862417665</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add File Uploading funciton">
+      <created>1427862565781</created>
+      <updated>1427862565781</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151132000" />
+    <option name="totallyTimeSpent" value="151154000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1592" y="-8" width="1936" height="1096" extended-state="6" />
