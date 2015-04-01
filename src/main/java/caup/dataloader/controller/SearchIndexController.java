@@ -12,8 +12,11 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,12 +35,13 @@ public class SearchIndexController {
     @RequestMapping(value = "/getResult",
             produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String getLuceneSeachResult(){
+    public String getLuceneSeachResult(@RequestParam("fileName") String fileName, HttpServletRequest request){
         List<SelectionDataFormat> ret = new ArrayList<SelectionDataFormat>();
         SelectionDataFormat selectionDataFormat = null;
         List<DimIndicator3Entity> dimIndicator3EntityList = selectionService.getIndicator().getData();
         try {
-            DataReader reader = new DataReader("D:\\IntelliJWorkspace\\DataLoader\\src\\main\\webapp\\datafile\\Jiaxing-shiqu-Test.xlsx", 1, 100, 2, true);
+            String realPath = request.getSession().getServletContext().getRealPath("/upload/");
+            DataReader reader = new DataReader(realPath + File.separator +fileName, 1, 100, 2, true);
             List<InputDataFormat> inputDataFormatList = reader.getYearBookIndexList();
 
             //Put the preprocessed data and the orginal data into map

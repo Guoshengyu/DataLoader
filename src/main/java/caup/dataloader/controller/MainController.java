@@ -33,7 +33,7 @@ public class MainController {
     @Autowired
     SelectionService selectionService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping()
     public String mainPageDisplay(ModelMap model) {
         model.addAttribute("msg", "Main Page");
 

@@ -20,11 +20,12 @@ import java.util.*;
  */
 public class DataWriter {
 
-    public void writeResultEXCEL(String strJsonResult) {
+    public String writeResultEXCEL(String strJsonResult, String fileRealPath) {
         List<SelectionResultFormat> resultFormat = getResultFormat(strJsonResult);
         System.out.println(resultFormat.toString());
+        File  file = new File(fileRealPath.substring(0, fileRealPath.lastIndexOf(".")) + "-output" + fileRealPath.substring(fileRealPath.lastIndexOf(".")));
         try {
-            DataReader reader = new DataReader("D:\\IntelliJWorkspace\\DataLoader\\src\\main\\webapp\\datafile\\Jiaxing-shiqu-Test.xlsx", 1, 100, 2, true);
+            DataReader reader = new DataReader(fileRealPath, 1, 100, 2, true);
             List<InputDataFormat> inputDataFormatList = reader.getYearBookIndexList();
 
 
@@ -50,13 +51,14 @@ public class DataWriter {
                 }
             }
 
-            File file = new File("D:\\IntelliJWorkspace\\DataLoader\\src\\main\\webapp\\datafile\\Jiaxing-shiqu-Test-Output.xlsx");
+
             OutputStream outputStream = new FileOutputStream(file);
             wb.write(outputStream);
             outputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return file.getName();
     }
 
     private Set<String> createHeaderRow(List<InputDataFormat> inputDataFormatList, XSSFSheet sheet) {

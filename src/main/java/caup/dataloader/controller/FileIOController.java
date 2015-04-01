@@ -5,12 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -21,6 +23,8 @@ import java.util.Iterator;
 @Controller
 @RequestMapping(value = "/file")
 public class FileIOController {
+
+
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     @ResponseBody
@@ -35,12 +39,37 @@ public class FileIOController {
         String oldFileName = mpf.getOriginalFilename();
         String newFileName = oldFileName.substring(0, oldFileName.indexOf(".")) + "-" + format.format(currentTime) + oldFileName.substring(oldFileName.indexOf("."));
         try {
-            mpf.transferTo(new File(realPath + "/" + newFileName));
-          //  FileUtils.copyInputStreamToFile(mpf.getInputStream(), new File(realPath, newFileName));
-            System.out.println("fjdsf");
+            mpf.transferTo(new File(realPath + File.separator + newFileName));
+            //  FileUtils.copyInputStreamToFile(mpf.getInputStream(), new File(realPath, newFileName));
+          //  System.out.println("fjdsf");
         }catch (Exception e){
             e.printStackTrace();
+            return "Failed";
         }
-        return realPath + newFileName;
+        return newFileName;
+    }
+
+    @RequestMapping(value = "/download" )
+    @ResponseBody
+    public void download(@RequestParam("fileName") String fileName, HttpServletRequest request,
+                           HttpServletResponse response) throws Exception{
+        // create full filename and get input stream
+
+        String realPath = request.getSession().getServletContext().getRealPath("/upload/");
+        String newFileName = fileName.substring(0, fileName.lastIndexOf(".")) + "-output" + fileName.substring(fileName.lastIndexOf("."));
+
+        File licenseFile = new File (realPath + File.separator + newFileName);
+        InputStream is = new FileInputStream(licenseFile);
+
+        // set file as attached data and copy file data to response output stream
+        response.setHeader("Content-Disposition", "attachment; filename=" + fileName );
+        FileCopyUtils.copy(is, response.getOutputStream());
+
+        // delete file on server file system
+        licenseFile.delete();
+
+        // close stream and return to view
+        response.flushBuffer();
+
     }
 }
