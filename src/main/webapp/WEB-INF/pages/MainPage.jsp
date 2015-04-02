@@ -21,21 +21,21 @@
 </head>
 <body>
 
-<div>
-    <h1>Data Loader Main Page</h1>
+<div  style="text-align: center">
+    <h1>CAUP Data Loader</h1>
+    <h3>Demo 0.2</h3>
 </div>
 
-${msg}
-<div>
+<div style="text-align: center">
     <%--<form id = "file-upload-form"   enctype="multipart/form-data">--%>
     <input type="file" name="myFiles" id="upload-file"/>
-    <button class="btn" onclick="ajaxFileUpload()">上传</button> <br>
+    <button class="btn" onclick="ajaxFileUpload()">Upload</button>
+    <br>
     <%--</form>--%>
-    <label id="process-condition"></label>
+    <label id="process-condition" style="font-family: Georgia"></label>
 </div>
-<div>
-    <h2> Test Radio checkbox</h2>
-    <table id="search-indicator">
+<div style="text-align: center">
+    <table id="search-indicator" border="1" style="font-family: Georgia; font-size: 16px">
     </table>
     <button class="btn" onclick="generateSelectionResultJson()">Confirm</button>
     <button class="btn" onclick="downloadFile()">Download</button>
@@ -53,24 +53,15 @@ ${msg}
     var fileName;
     var downloadFilePath;
 
-    /*function getIndexList() {
-     $.get("getData/getIndicator", function (data, status) {
-     //     indexList = JSON.parse(data);
-     indexList = data;
-     $("#test-indicator").html("hd中文fs");
-     $.each(indexList.IndexList, function(index, item){
-     $("#test-indicator").append(item.IndexName + "  " + item.Unit + "<br>");
-     })
-     });
-     }*/
-
     function getSearchResultList() {
-        $("#process-condition").html("processing..");
+
+        $("#process-condition").html("Processing..");
+        var startTime = new Date().getTime();
         $.get("searchIndex/getResult?fileName=" + fileName, function (data, status) {
             searchResultList = data;
             $.each(searchResultList.IndexList, function (index, item) {
                 //Selection Tag Start
-                $("#search-indicator").append("<tr> <td>" + item.Region + "  " + item.DBIndex + " " + item.DBUnit + "</td> <td><select id = \"search-result-selection-" + index + "\">");
+                $("#search-indicator").append("<tr> <td>" + (index+1) + " " + item.Region + "  " + item.DBIndex + " " + item.DBUnit + "</td> <td><select id = \"search-result-selection-" + index + "\">");
                 $.each(item.ybIndexList, function (index1, item1) {
                     //Add selector options
                     var selectorObj = document.getElementById("search-result-selection-" + index);
@@ -83,9 +74,17 @@ ${msg}
                 //Selection Tag End
                 $("#search-indicator").append("</select></td></tr>");
                 indexCount = index + 1;
+           //     var processNumber = Math.floor((searchResultList.IndexList.length - 1) / 10 );
+                var interval = new Date().getTime() - startTime;
+                  //  var endTime = endTimeDate.toLocaleTimeString();
+                   // $("#process-condition").html(get_time_diff(startTimeDate));
+                    $("#process-condition").html(interval /1000 + " seconds for " + indexCount + " indexes");
+
+
             })
+
         });
-        $("#process-condition").html("");
+
     }
 
     function getSelectionList() {
@@ -114,6 +113,7 @@ ${msg}
             //data: JSON.stringify(selectionResultJson),
             success: function (data) {
                 downloadFilePath = data;
+                // downloadFile();
             }
         });
     }
@@ -127,13 +127,10 @@ ${msg}
         selectionResultJson = JSON.parse(JSON.stringify(tempRetResultList));
         console.log(JSON.stringify(selectionResultJson));
         postSelectionResult(selectionResultJson);
-       // downloadFile();
+        // downloadFile();
     }
 
     function ajaxFileUpload() {
-        //开始上传文件时显示一个图片,文件上传完成将图片隐藏
-        //$("#loading").ajaxStart(function(){$(this).show();}).ajaxComplete(function(){$(this).hide();});
-        //执行上传文件操作的函数
         $.ajaxFileUpload({
             //处理文件上传操作的服务器端地址(可以传参数,已亲测可用)
             url: "file/upload",
@@ -160,9 +157,5 @@ ${msg}
                 + fileName;
     }
 
-    // getSearchResultList();
-    //getIndexList();
-
 </script>
 </html>
-1
