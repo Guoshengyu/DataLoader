@@ -32,18 +32,8 @@
       <file leaf-file-name="MainPage.jsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54404944" vertical-offset="462" max-vertical-offset="3674">
-              <caret line="37" column="61" selection-start-line="37" selection-start-column="61" selection-end-line="37" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="462">
-              <caret line="15" column="64" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
+            <state vertical-scroll-proportion="0.47604328" vertical-offset="2640" max-vertical-offset="3718">
+              <caret line="134" column="40" selection-start-line="134" selection-start-column="40" selection-end-line="134" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -994,7 +984,7 @@
       <workItem from="1427785705766" duration="16248000" />
       <workItem from="1427810948381" duration="17801000" />
       <workItem from="1427871519426" duration="15787000" />
-      <workItem from="1427939955303" duration="3245000" />
+      <workItem from="1427939955303" duration="4864000" />
     </task>
     <task id="LOCAL-00001" summary="Archetype with Spring 4.0.6 + Hibernate 4.2.2&#10;&#10;Database connection Established">
       <created>1426940926522</created>
@@ -1052,11 +1042,15 @@
       <created>1427891027446</created>
       <updated>1427891027446</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Demo 0.2&#10;&#10;Stable version for Jiaxing Shiqu">
+      <created>1427943703496</created>
+      <updated>1427943703496</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="170216000" />
+    <option name="totallyTimeSpent" value="171835000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1592" y="-8" width="1936" height="1096" extended-state="6" />
@@ -1120,7 +1114,8 @@
     <MESSAGE value="Get the result in the selector and generate a json object with DB index and selected YB index" />
     <MESSAGE value="Add File Uploading funciton" />
     <MESSAGE value="Demo 0.1&#10;&#10;With all the functions completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Demo 0.1&#10;&#10;With all the functions completed" />
+    <MESSAGE value="Demo 0.2&#10;&#10;Stable version for Jiaxing Shiqu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Demo 0.2&#10;&#10;Stable version for Jiaxing Shiqu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1578,8 +1573,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54404944" vertical-offset="462" max-vertical-offset="3674">
-          <caret line="37" column="61" selection-start-line="37" selection-start-column="61" selection-end-line="37" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.47604328" vertical-offset="2640" max-vertical-offset="3718">
+          <caret line="134" column="40" selection-start-line="134" selection-start-column="40" selection-end-line="134" selection-end-column="40" />
           <folding />
         </state>
       </provider>

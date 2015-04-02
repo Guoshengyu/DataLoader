@@ -59,6 +59,7 @@
         var startTime = new Date().getTime();
         $.get("searchIndex/getResult?fileName=" + fileName, function (data, status) {
             searchResultList = data;
+            $("#search-indicator").html("");
             $.each(searchResultList.IndexList, function (index, item) {
                 //Selection Tag Start
                 $("#search-indicator").append("<tr> <td>" + (index+1) + " " + item.Region + "  " + item.DBIndex + " " + item.DBUnit + "</td> <td><select id = \"search-result-selection-" + index + "\">");
@@ -131,6 +132,7 @@
     }
 
     function ajaxFileUpload() {
+        $("#search-indicator").html("");
         $.ajaxFileUpload({
             //处理文件上传操作的服务器端地址(可以传参数,已亲测可用)
             url: "file/upload",
