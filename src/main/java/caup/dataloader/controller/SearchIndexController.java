@@ -50,8 +50,17 @@ public class SearchIndexController {
                 orgIndexMap.put(StringUtils.yearbookIndexPreprocess(inputDataFormat.getIndexName().replaceAll(" ", "")), inputDataFormat.getIndexName().replaceAll(" ", ""));
             }
             searchForAllIndex(ret, dimIndicator3EntityList, inputDataFormatList, orgIndexMap);
-        } catch (Exception e) {
+
+        }
+        catch (IllegalStateException e){
             e.printStackTrace();
+            System.out.println("1");
+            return "fail";
+        }
+        catch (Throwable e) {
+          //  e.printStackTrace();
+            System.out.println("2");
+            return "fail";
         }
 
         return selectionDataConverToJson(ret).toString();

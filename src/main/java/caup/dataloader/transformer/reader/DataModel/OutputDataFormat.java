@@ -11,4 +11,27 @@ public class OutputDataFormat {
 //    String unit;
     Map<String, Double> yValueMap;
 
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getIndexName() {
+        return indexName;
+    }
+
+    public void setIndexName(String indexName) {
+        this.indexName = indexName;
+    }
+
+    public Map<String, Double> getyValueMap() {
+        return yValueMap;
+    }
+
+    public void setyValueMap(Map<String, Double> yValueMap) {
+        this.yValueMap = yValueMap;
+    }
 }

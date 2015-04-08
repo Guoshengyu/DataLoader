@@ -44,7 +44,6 @@
 
 </body>
 <script type="text/javascript">
-
     var indexList;
     var searchResultList;
     var indexCount;
@@ -58,6 +57,11 @@
         $("#process-condition").html("Processing..");
         var startTime = new Date().getTime();
         $.get("searchIndex/getResult?fileName=" + fileName, function (data, status) {
+            if (data == "fail"){
+                alert("FFF");
+                return;
+            }
+
             searchResultList = data;
             $("#search-indicator").html("");
             $.each(searchResultList.IndexList, function (index, item) {
@@ -77,9 +81,7 @@
                 indexCount = index + 1;
            //     var processNumber = Math.floor((searchResultList.IndexList.length - 1) / 10 );
                 var interval = new Date().getTime() - startTime;
-                  //  var endTime = endTimeDate.toLocaleTimeString();
-                   // $("#process-condition").html(get_time_diff(startTimeDate));
-                    $("#process-condition").html(interval /1000 + " seconds for " + indexCount + " indexes");
+                $("#process-condition").html(interval /1000 + " seconds for " + indexCount + " indexes");
 
 
             })
@@ -113,8 +115,14 @@
             data: JSON.stringify(obj),
             //data: JSON.stringify(selectionResultJson),
             success: function (data) {
-                downloadFilePath = data;
-              //  downloadFile();
+                console.log("1111");
+                downloadFilePath = data.name;
+                downloadFile();
+            },
+            error:function() {
+                console.log("4444");
+               // alert(arguments[1]);
+                downloadFile();
             }
         });
     }
@@ -128,8 +136,8 @@
         selectionResultJson = JSON.parse(JSON.stringify(tempRetResultList));
         console.log(JSON.stringify(selectionResultJson));
         postSelectionResult(selectionResultJson);
-        console.log("123434244");
-         downloadFile();
+
+      //   downloadFile();
     }
 
     function ajaxFileUpload() {
