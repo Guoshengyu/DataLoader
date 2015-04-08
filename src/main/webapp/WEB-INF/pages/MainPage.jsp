@@ -23,7 +23,7 @@
 
 <div  style="text-align: center">
     <h1>CAUP Data Loader</h1>
-    <h3>Demo 0.2</h3>
+    <h3>Demo 0.3</h3>
 </div>
 
 <div style="text-align: center">
@@ -37,8 +37,8 @@
 <div style="text-align: center">
     <table id="search-indicator" border="1" style="font-family: Georgia; font-size: 16px">
     </table>
-    <button class="btn" onclick="generateSelectionResultJson()">Confirm</button>
-    <button class="btn" onclick="downloadFile()">Download</button>
+    <button class="btn" onclick="generateSelectionResultJson()">Confirm & Download</button>
+    <%--<button class="btn" onclick="downloadFile()">Download</button>--%>
 
 </div>
 
@@ -114,7 +114,7 @@
             //data: JSON.stringify(selectionResultJson),
             success: function (data) {
                 downloadFilePath = data;
-                // downloadFile();
+              //  downloadFile();
             }
         });
     }
@@ -128,7 +128,8 @@
         selectionResultJson = JSON.parse(JSON.stringify(tempRetResultList));
         console.log(JSON.stringify(selectionResultJson));
         postSelectionResult(selectionResultJson);
-        // downloadFile();
+        console.log("123434244");
+         downloadFile();
     }
 
     function ajaxFileUpload() {
@@ -149,7 +150,6 @@
             },
             error: function (data, status, e) { //服务器响应失败时的处理函数
                 alert(data);
-                ;
             }
         });
     }

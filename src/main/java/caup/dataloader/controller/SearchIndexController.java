@@ -42,7 +42,7 @@ public class SearchIndexController {
         try {
             String realPath = request.getSession().getServletContext().getRealPath("/upload/");
             DataReader reader = new DataReader(realPath + File.separator +fileName, 1, 100, 2, true);
-            List<InputDataFormat> inputDataFormatList = reader.getYearBookIndexList();
+            List<InputDataFormat> inputDataFormatList = reader.getYearBookIndexListNew();
 
             //Put the preprocessed data and the orginal data into map
             Map<String, String> orgIndexMap = new HashMap<String, String>();

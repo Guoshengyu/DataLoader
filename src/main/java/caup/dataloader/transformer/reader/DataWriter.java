@@ -26,7 +26,7 @@ public class DataWriter {
         File  file = new File(fileRealPath.substring(0, fileRealPath.lastIndexOf(".")) + "-output" + fileRealPath.substring(fileRealPath.lastIndexOf(".")));
         try {
             DataReader reader = new DataReader(fileRealPath, 1, 100, 2, true);
-            List<InputDataFormat> inputDataFormatList = reader.getYearBookIndexList();
+            List<InputDataFormat> inputDataFormatList = reader.getYearBookIndexListNew();
 
 
             XSSFWorkbook wb = new XSSFWorkbook();
