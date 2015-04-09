@@ -23,7 +23,7 @@
 
 <div  style="text-align: center">
     <h1>CAUP Data Loader</h1>
-    <h3>Demo 0.3</h3>
+    <h3>Demo 0.4</h3>
 </div>
 
 <div style="text-align: center">

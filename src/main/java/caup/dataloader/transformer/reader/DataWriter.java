@@ -42,6 +42,12 @@ public class DataWriter {
                 Map<String, Double> resultMap = new TreeMap<String, Double>();
                 outputDataFormat.setIndexName(selectionResultFormat.getDBIndex());
                 List<InputDataFormat> searchResult = searchForYBNew(selectionResultFormat.getYBIndex(), inputDataFormatList);
+                //Test
+                if(selectionResultFormat.getYBIndex().equals("工业主要经济指标_工业增加值(生产法)_总计")){
+                    searchResult.get(0).getyValueMap();
+                }
+
+                //~Test
                 for(InputDataFormat format: searchResult){
                     for(Map.Entry<String, Double> entry: format.getyValueMap().entrySet())
                         resultMap.put(entry.getKey(), entry.getValue());

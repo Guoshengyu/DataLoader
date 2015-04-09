@@ -1,15 +1,13 @@
 package caup.dataloader.transformer.reader;
 
 import caup.dataloader.transformer.reader.DataModel.InputDataFormat;
+import caup.dataloader.transformer.reader.DataModel.OutputDataFormat;
 import caup.dataloader.util.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**
@@ -44,7 +42,17 @@ public class DataReader {
             ret.add(inputDataFormat);
         }
         inputStream.close();
-        return ret;
+
+
+        //Test
+        for(InputDataFormat format: ret) {
+            if(format.getIndexName().equals("工业主要经济指标_工业增加值(生产法)_总计"))
+                format.getyValueMap();
+        }
+        //~Test
+
+
+        return getAggregateInputFormats(ret);
 
     }
 
@@ -174,4 +182,18 @@ public class DataReader {
         return ret;
     }
 
+    private List<InputDataFormat> getAggregateInputFormats(List<InputDataFormat> inputDataFormatList){
+        List<InputDataFormat> ret = new ArrayList<InputDataFormat>();
+        for(InputDataFormat inputDataFormat1: inputDataFormatList){
+            for(InputDataFormat inputDataFormat2: inputDataFormatList){
+                if(inputDataFormat1.getIndexName().equals(inputDataFormat2.getIndexName())){
+                    for(String key: inputDataFormat2.getyValueMap().keySet())
+                        inputDataFormat1.getyValueMap().put(key, inputDataFormat2.getyValueMap().get(key) );
+                }
+
+            }
+            ret.add(inputDataFormat1);
+        }
+        return ret;
+    }
 }
