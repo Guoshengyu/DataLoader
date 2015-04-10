@@ -1,5 +1,6 @@
 package caup.dataloader.controller;
 
+import caup.dataloader.util.StringUtils;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
@@ -25,48 +26,42 @@ import java.util.Iterator;
 public class FileIOController {
 
 
-
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     @ResponseBody
-    public String upload(MultipartHttpServletRequest request, HttpServletResponse response){
+    public String upload(MultipartHttpServletRequest request, HttpServletResponse response) {
 
         Iterator<String> iter = request.getFileNames();
 
         MultipartFile mpf = request.getFile(iter.next());
-        Date currentTime = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH mm ss");
         String realPath = request.getSession().getServletContext().getRealPath("/upload/");
         String oldFileName = mpf.getOriginalFilename();
-        String newFileName = oldFileName.substring(0, oldFileName.indexOf(".")) + "-" + format.format(currentTime) + oldFileName.substring(oldFileName.indexOf("."));
+        String newFileName = StringUtils.uploadFileNameProcess(oldFileName);
         try {
             mpf.transferTo(new File(realPath + File.separator + newFileName));
-            //  FileUtils.copyInputStreamToFile(mpf.getInputStream(), new File(realPath, newFileName));
-          //  System.out.println("fjdsf");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "Failed";
         }
         return newFileName;
     }
 
-    @RequestMapping(value = "/download" )
+    @RequestMapping(value = "/download")
     @ResponseBody
     public void download(@RequestParam("fileName") String fileName, HttpServletRequest request,
-                           HttpServletResponse response) throws Exception{
-        // create full filename and get input stream
+                         HttpServletResponse response) throws Exception {
 
-        String realPath = request.getSession().getServletContext().getRealPath("/upload/");
-        String newFileName = fileName.substring(0, fileName.lastIndexOf(".")) + "-output" + fileName.substring(fileName.lastIndexOf("."));
+          String realPath = request.getSession().getServletContext().getRealPath("/upload/");
+        String newFileName = StringUtils.downloadFileNameProcess(fileName);
 
-        File licenseFile = new File (realPath + File.separator + newFileName);
-        InputStream is = new FileInputStream(licenseFile);
+        File attachFile = new File(realPath + File.separator + newFileName);
+        InputStream is = new FileInputStream(attachFile);
 
         // set file as attached data and copy file data to response output stream
-        response.setHeader("Content-Disposition", "attachment; filename=" + fileName );
+        response.setHeader("Content-Disposition", "attachment; filename=" + newFileName);
         FileCopyUtils.copy(is, response.getOutputStream());
 
         // delete file on server file system
-        licenseFile.delete();
+        //attachFile.delete();
 
         // close stream and return to view
         response.flushBuffer();

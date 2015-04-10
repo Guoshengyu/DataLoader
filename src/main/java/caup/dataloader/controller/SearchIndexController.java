@@ -3,7 +3,7 @@ package caup.dataloader.controller;
 import caup.dataloader.entity.DimIndicator3Entity;
 import caup.dataloader.service.SelectionService;
 import caup.dataloader.transformer.reader.CoreIndexSearcher;
-import caup.dataloader.transformer.reader.DataModel.InputDataFormat;
+import caup.dataloader.transformer.reader.DataModel.ExcelInputDataFormat;
 import caup.dataloader.transformer.reader.DataModel.SelectionDataFormat;
 import caup.dataloader.transformer.reader.DataReader;
 import caup.dataloader.util.StringUtils;
@@ -42,14 +42,14 @@ public class SearchIndexController {
         try {
             String realPath = request.getSession().getServletContext().getRealPath("/upload/");
             DataReader reader = new DataReader(realPath + File.separator +fileName, 1, 100, 2, true);
-            List<InputDataFormat> inputDataFormatList = reader.getYearBookIndexListNew();
+            List<ExcelInputDataFormat> excelInputDataFormatList = reader.getYearBookIndexListNew();
 
             //Put the preprocessed data and the orginal data into map
             Map<String, String> orgIndexMap = new HashMap<String, String>();
-            for (InputDataFormat inputDataFormat : inputDataFormatList) {
-                orgIndexMap.put(StringUtils.yearbookIndexPreprocess(inputDataFormat.getIndexName().replaceAll(" ", "")), inputDataFormat.getIndexName().replaceAll(" ", ""));
+            for (ExcelInputDataFormat excelInputDataFormat : excelInputDataFormatList) {
+                orgIndexMap.put(StringUtils.yearbookIndexPreprocess(excelInputDataFormat.getYBIndex().replaceAll(" ", "")), excelInputDataFormat.getYBIndex().replaceAll(" ", ""));
             }
-            searchForAllIndex(ret, dimIndicator3EntityList, inputDataFormatList, orgIndexMap);
+            searchForAllIndex(ret, dimIndicator3EntityList, excelInputDataFormatList, orgIndexMap);
 
         }
         catch (IllegalStateException e){
@@ -66,16 +66,16 @@ public class SearchIndexController {
         return selectionDataConverToJson(ret).toString();
     }
 
-    private void searchForAllIndex(List<SelectionDataFormat> ret, List<DimIndicator3Entity> dimIndicator3EntityList, List<InputDataFormat> inputDataFormatList, Map<String, String> orgIndexMap) throws Exception {
+    private void searchForAllIndex(List<SelectionDataFormat> ret, List<DimIndicator3Entity> dimIndicator3EntityList, List<ExcelInputDataFormat> excelInputDataFormatList, Map<String, String> orgIndexMap) throws Exception {
         SelectionDataFormat selectionDataFormat;
    //     for(int i = 0; i != 30; i++) {
         for(int i = 0; i != dimIndicator3EntityList.size(); ++i){
             CoreIndexSearcher coreIndexSearcher = new CoreIndexSearcher(dimIndicator3EntityList.get(i).getIndexName().trim(), new ArrayList<String>(orgIndexMap.keySet()));
             List<String> result = coreIndexSearcher.getTopYearbookIndex();
-            // System.out.println(dimIndicator3EntityList.get(i).getIndexName());
+            // System.out.println(dimIndicator3EntityList.get(i).getYBIndex());
             Map<String, String> map =new HashMap<String, String>();
             for(String str: result){
-                map.put(orgIndexMap.get(str), searchFromInputDataModel(inputDataFormatList,orgIndexMap.get(str)).getUnit());
+                map.put(orgIndexMap.get(str), searchFromInputDataModel(excelInputDataFormatList,orgIndexMap.get(str)).getUnit());
             }
             selectionDataFormat = new SelectionDataFormat();
             selectionDataFormat.setDatabaseIndex(dimIndicator3EntityList.get(i).getIndexName());
@@ -91,12 +91,12 @@ public class SearchIndexController {
         }
     }
 
-    private InputDataFormat searchFromInputDataModel(List<InputDataFormat> inputDataFormatList, String yearbookIndex){
-        for(InputDataFormat item: inputDataFormatList){
-            if(item.getIndexName().equals(yearbookIndex))
+    private ExcelInputDataFormat searchFromInputDataModel(List<ExcelInputDataFormat> excelInputDataFormatList, String yearbookIndex){
+        for(ExcelInputDataFormat item: excelInputDataFormatList){
+            if(item.getYBIndex().equals(yearbookIndex))
                 return item;
         }
-        return new InputDataFormat();
+        return new ExcelInputDataFormat();
     }
 
     private JSONObject selectionDataConverToJson(List<SelectionDataFormat> selectionDataFormatList){

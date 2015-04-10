@@ -1,14 +1,12 @@
 package caup.dataloader.transformer.reader;
 
-import caup.dataloader.transformer.reader.DataModel.InputDataFormat;
-import caup.dataloader.transformer.reader.DataModel.OutputDataFormat;
+import caup.dataloader.transformer.reader.DataModel.ExcelInputDataFormat;
 import caup.dataloader.util.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.*;
-import java.util.regex.Pattern;
 
 /**
  * Created by Richard on 2015/03/23 .
@@ -29,24 +27,24 @@ public class DataReader {
         yearbookValueStartColumn = _yearbookValueStartColumn;
     }
 
-    public List<InputDataFormat> getYearBookIndexListNew() throws Exception {
+    public List<ExcelInputDataFormat> getYearBookIndexListNew() throws Exception {
         InputStream inputStream = new FileInputStream(filePath);
         Workbook wb = WorkbookFactory.create(inputStream);
-        List<InputDataFormat> ret = new ArrayList<InputDataFormat>();
+        List<ExcelInputDataFormat> ret = new ArrayList<ExcelInputDataFormat>();
 
         Sheet sheet = wb.getSheetAt(0);
         Row firstRow = sheet.getRow(0);
         for (int rowIndex = 0; rowIndex != sheet.getLastRowNum(); ++rowIndex) {
             Row row = sheet.getRow(rowIndex);
-            InputDataFormat inputDataFormat = getInputDataFromRowNew(row, firstRow);
-            ret.add(inputDataFormat);
+            ExcelInputDataFormat excelInputDataFormat = getInputDataFromRowNew(row, firstRow);
+            ret.add(excelInputDataFormat);
         }
         inputStream.close();
 
 
         //Test
-        for(InputDataFormat format: ret) {
-            if(format.getIndexName().equals("工业主要经济指标_工业增加值(生产法)_总计"))
+        for(ExcelInputDataFormat format: ret) {
+            if(format.getYBIndex().equals("工业主要经济指标_工业增加值(生产法)_总计"))
                 format.getyValueMap();
         }
         //~Test
@@ -56,9 +54,9 @@ public class DataReader {
 
     }
 
-    private InputDataFormat getInputDataFromRowNew(Row row, Row headerRow) {
+    private ExcelInputDataFormat getInputDataFromRowNew(Row row, Row headerRow) {
 
-        InputDataFormat ret = new InputDataFormat();
+        ExcelInputDataFormat ret = new ExcelInputDataFormat();
         Cell regionCell = row.getCell(0);
         Cell yearbookIndexCell1 = row.getCell(1);
         Cell yearbookIndexCell2 = row.getCell(3);
@@ -95,7 +93,9 @@ public class DataReader {
             indexName = indexName1 + "_" + indexName2;
         }
         indexName = indexName.replaceAll("[0-9]{1,2}-[0-9]{1,2}", "").trim();
-        ret.setIndexName(indexName);
+        indexName = indexName.replaceAll("续表 [0-9]{1,2}", "").trim();
+        indexName = indexName.replaceAll("续表[0-9]{1,2}", "").trim();
+        ret.setYBIndex(indexName);
         //For year & unit
         Map<String, Double> yearbookValue = new HashMap<String, Double>();
         String year = new String();
@@ -119,17 +119,17 @@ public class DataReader {
         return ret;
     }
 
-    public List<InputDataFormat> getYearBookIndexListOld() throws Exception {
+    public List<ExcelInputDataFormat> getYearBookIndexListOld() throws Exception {
         InputStream inputStream = new FileInputStream(filePath);
         Workbook wb = WorkbookFactory.create(inputStream);
-        List<InputDataFormat> ret = new ArrayList<InputDataFormat>();
+        List<ExcelInputDataFormat> ret = new ArrayList<ExcelInputDataFormat>();
 
         Sheet sheet = wb.getSheetAt(0);
         Row firstRow = sheet.getRow(0);
         for (int rowIndex = 1; rowIndex != sheet.getLastRowNum(); ++rowIndex) {
             Row row = sheet.getRow(rowIndex);
-            InputDataFormat inputDataFormat = getInputDataFromRowOld(row, firstRow);
-            ret.add(inputDataFormat);
+            ExcelInputDataFormat excelInputDataFormat = getInputDataFromRowOld(row, firstRow);
+            ret.add(excelInputDataFormat);
         }
         inputStream.close();
         return ret;
@@ -154,17 +154,17 @@ public class DataReader {
     /**
      * Read one row from the excel to set the InputDataFormat data model with the first row defined as the header
      */
-    private InputDataFormat getInputDataFromRowOld(Row row, Row headerRow) {
+    private ExcelInputDataFormat getInputDataFromRowOld(Row row, Row headerRow) {
         Cell yearbookIndexCell = null;
         Cell yearbookUnitCell = null;
         Cell yearbookValueCell = null;
         Map<String, Double> yearbookValue = new HashMap<String, Double>();
-        InputDataFormat ret = new InputDataFormat();
+        ExcelInputDataFormat ret = new ExcelInputDataFormat();
 
         yearbookIndexCell = row.getCell(yearbookIndexColumn);
         yearbookUnitCell = row.getCell(yearbookUnitColumn);
 
-        ret.setIndexName((yearbookIndexCell == null || yearbookIndexCell.getStringCellValue().isEmpty()) ? "NULL" : yearbookIndexCell.getStringCellValue());
+        ret.setYBIndex((yearbookIndexCell == null || yearbookIndexCell.getStringCellValue().isEmpty()) ? "NULL" : yearbookIndexCell.getStringCellValue());
         ret.setUnit((yearbookUnitCell == null || yearbookUnitCell.getStringCellValue().isEmpty()) ? "NULL" : yearbookUnitCell.getStringCellValue());
         for (int columnNum = yearbookValueStartColumn; columnNum != row.getLastCellNum(); ++columnNum) {
             yearbookValueCell = row.getCell(columnNum);
@@ -182,17 +182,17 @@ public class DataReader {
         return ret;
     }
 
-    private List<InputDataFormat> getAggregateInputFormats(List<InputDataFormat> inputDataFormatList){
-        List<InputDataFormat> ret = new ArrayList<InputDataFormat>();
-        for(InputDataFormat inputDataFormat1: inputDataFormatList){
-            for(InputDataFormat inputDataFormat2: inputDataFormatList){
-                if(inputDataFormat1.getIndexName().equals(inputDataFormat2.getIndexName())){
-                    for(String key: inputDataFormat2.getyValueMap().keySet())
-                        inputDataFormat1.getyValueMap().put(key, inputDataFormat2.getyValueMap().get(key) );
+    private List<ExcelInputDataFormat> getAggregateInputFormats(List<ExcelInputDataFormat> excelInputDataFormatList){
+        List<ExcelInputDataFormat> ret = new ArrayList<ExcelInputDataFormat>();
+        for(ExcelInputDataFormat excelInputDataFormat1 : excelInputDataFormatList){
+            for(ExcelInputDataFormat excelInputDataFormat2 : excelInputDataFormatList){
+                if(excelInputDataFormat1.getYBIndex().equals(excelInputDataFormat2.getYBIndex())){
+                    for(String key: excelInputDataFormat2.getyValueMap().keySet())
+                        excelInputDataFormat1.getyValueMap().put(key, excelInputDataFormat2.getyValueMap().get(key) );
                 }
 
             }
-            ret.add(inputDataFormat1);
+            ret.add(excelInputDataFormat1);
         }
         return ret;
     }

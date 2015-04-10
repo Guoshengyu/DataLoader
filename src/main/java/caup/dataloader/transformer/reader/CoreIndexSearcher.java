@@ -31,59 +31,53 @@ public class CoreIndexSearcher {
     static String FIELD_NAME = "index-name";
     List<String> yearBookIndexList;
     String databaseIndex;
-    public CoreIndexSearcher(){
+
+    public CoreIndexSearcher() {
         yearBookIndexList = new ArrayList<String>();
         databaseIndex = null;
     }
-    public CoreIndexSearcher(String _databaseIndex, List<String> _yearBookIndexList){
+
+    public CoreIndexSearcher(String _databaseIndex, List<String> _yearBookIndexList) {
         this.yearBookIndexList = _yearBookIndexList;
         this.databaseIndex = _databaseIndex;
     }
-    public CoreIndexSearcher(String _databaseIndex, List<String> _yearBookIndexList, int _maxScoreIndex){
+
+    public CoreIndexSearcher(String _databaseIndex, List<String> _yearBookIndexList, int _maxScoreIndex) {
         this.yearBookIndexList = _yearBookIndexList;
         this.databaseIndex = _databaseIndex;
         TOP_SCORE_YEARBOOK_INDEX = _maxScoreIndex;
     }
+
     /**
-     *
+     * @throws java.lang.Exception
      * @Return Top yearbook indexes based on searching
-     *
-     * @exception java.lang.Exception
      */
-    public List<String> getTopYearbookIndex() throws Exception{
+    public List<String> getTopYearbookIndex() throws Exception {
         DirectoryReader reader = DirectoryReader.open(getLuceneIndexDirectory());
         IndexSearcher searcher = new IndexSearcher(reader);
         QueryParser queryParser = new QueryParser(Version.LUCENE_43, FIELD_NAME, new IKAnalyzer());
-
-       // Query query =queryParser.escape("-&|!(){}[]^~*?:\\ ");
-                //= queryParser.parse(QueryParser.escape("-&|!(){}[]^~*?:\\ "));
         Query query;
-       /* if(databaseIndex.lastIndexOf(")") == databaseIndex.length() - 1) {
-            query = queryParser.parse(databaseIndex.substring(0, databaseIndex.lastIndexOf("(")));
-        }else {
-            query = queryParser.parse(databaseIndex);
-        }*/
         query = safe_query_parser(queryParser, databaseIndex);
         TopDocs topDocs = searcher.search(query, TOP_SCORE_YEARBOOK_INDEX);
         List<String> ret = new ArrayList<String>();
-        for(ScoreDoc match: topDocs.scoreDocs){
+        for (ScoreDoc match : topDocs.scoreDocs) {
             Document document = searcher.doc(match.doc);
             ret.add(document.getField(FIELD_NAME).stringValue());
         }
-        return  ret;
+        return ret;
     }
 
-    private Query safe_query_parser(QueryParser qp, String raw_query)throws org.apache.lucene.queryparser.classic.ParseException {
+    private Query safe_query_parser(QueryParser qp, String raw_query) throws org.apache.lucene.queryparser.classic.ParseException {
         Query q;
         try {
             q = qp.parse(raw_query);
-        } catch(org.apache.lucene.queryparser.classic.ParseException e) {
+        } catch (org.apache.lucene.queryparser.classic.ParseException e) {
             q = null;
         }
-        if(q==null) {
+        if (q == null) {
             String cooked;
             // consider changing this "" to " "
-            cooked = raw_query.replace("("," ");
+            cooked = raw_query.replace("(", " ");
             cooked = cooked.replace(")", " ");
             cooked = cooked.replace("/", " ");
             System.out.println("Parsing ERROR!!   " + cooked);
@@ -91,19 +85,18 @@ public class CoreIndexSearcher {
         }
         return q;
     }
+
     /**
-     *  We use RAM directory(index in memory) to create index due to the small size of text yearbook Index
+     * We use RAM directory(index in memory) to create index due to the small size of text yearbook Index
      *
-     * @exception java.io.IOException
+     * @throws java.io.IOException
      */
-    private Directory getLuceneIndexDirectory() throws IOException{
+    private Directory getLuceneIndexDirectory() throws IOException {
         RAMDirectory directory = new RAMDirectory();
         IKAnalyzer analyzer = new IKAnalyzer();
-        IndexWriterConfig iwc = new IndexWriterConfig(Version.LUCENE_43,analyzer);
+        IndexWriterConfig iwc = new IndexWriterConfig(Version.LUCENE_43, analyzer);
         IndexWriter indexWriter = new IndexWriter(directory, iwc);
-
-
-        for(String text: yearBookIndexList){
+        for (String text : yearBookIndexList) {
             Document document = new Document();
             document.add(new TextField(FIELD_NAME, text.trim(), Field.Store.YES));
             indexWriter.addDocument(document, analyzer);

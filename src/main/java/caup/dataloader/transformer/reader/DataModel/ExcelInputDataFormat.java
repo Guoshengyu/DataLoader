@@ -5,10 +5,10 @@ import java.util.Map;
 /**
  * Created by Richard on 2015/03/23 .
  */
-public class OutputDataFormat {
+public class ExcelInputDataFormat {
     String region;
-    String indexName;
-//    String unit;
+    String YBIndex;
+    String unit;
     Map<String, Double> yValueMap;
 
     public String getRegion() {
@@ -19,12 +19,20 @@ public class OutputDataFormat {
         this.region = region;
     }
 
-    public String getIndexName() {
-        return indexName;
+    public String getYBIndex() {
+        return YBIndex;
     }
 
-    public void setIndexName(String indexName) {
-        this.indexName = indexName;
+    public void setYBIndex(String YBIndex) {
+        this.YBIndex = YBIndex;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public Map<String, Double> getyValueMap() {
