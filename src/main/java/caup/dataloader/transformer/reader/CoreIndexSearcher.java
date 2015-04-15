@@ -53,7 +53,8 @@ public class CoreIndexSearcher {
      * @Return Top yearbook indexes based on searching
      */
     public List<String> getTopYearbookIndex() throws Exception {
-        DirectoryReader reader = DirectoryReader.open(getLuceneIndexDirectory());
+        Directory indexDirectory = getLuceneIndexDirectory();
+        DirectoryReader reader = DirectoryReader.open(indexDirectory);
         IndexSearcher searcher = new IndexSearcher(reader);
         QueryParser queryParser = new QueryParser(Version.LUCENE_43, FIELD_NAME, new IKAnalyzer());
         Query query;
@@ -63,6 +64,7 @@ public class CoreIndexSearcher {
         for (ScoreDoc match : topDocs.scoreDocs) {
             Document document = searcher.doc(match.doc);
             ret.add(document.getField(FIELD_NAME).stringValue());
+
         }
         return ret;
     }

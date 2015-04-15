@@ -53,9 +53,9 @@
     var downloadFilePath;
 
     function getSearchResultList() {
-
         $("#process-condition").html("Processing..");
         var startTime = new Date().getTime();
+        var hitCount = 0;
         $.get("searchIndex/getResult?fileName=" + fileName, function (data, status) {
             if (data == "fail"){
                 alert("FFF");
@@ -67,6 +67,10 @@
             $.each(searchResultList.IndexList, function (index, item) {
                 //Selection Tag Start
                 $("#search-indicator").append("<tr> <td>" + (index+1) + " " + item.Region + "  " + item.DBIndex + " " + item.DBUnit + "</td> <td><select id = \"search-result-selection-" + index + "\">");
+                if(item.ybIndexList.length > 0){
+                    hitCount++;
+                }
+
                 $.each(item.ybIndexList, function (index1, item1) {
                     //Add selector options
                     var selectorObj = document.getElementById("search-result-selection-" + index);
@@ -81,8 +85,8 @@
                 indexCount = index + 1;
            //     var processNumber = Math.floor((searchResultList.IndexList.length - 1) / 10 );
                 var interval = new Date().getTime() - startTime;
-                $("#process-condition").html(interval /1000 + " seconds for " + indexCount + " indexes");
-
+                $("#process-condition").html(interval /1000 + " seconds  <br>");
+                $("#process-condition").append(hitCount + " hits for " + indexCount + " indexes <br>");
 
             })
 

@@ -58,7 +58,7 @@ public class SearchIndexController {
             return "fail";
         }
         catch (Throwable e) {
-          //  e.printStackTrace();
+            e.printStackTrace();
             System.out.println("2");
             return "fail";
         }

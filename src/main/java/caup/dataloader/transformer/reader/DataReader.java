@@ -40,8 +40,6 @@ public class DataReader {
             ret.add(excelInputDataFormat);
         }
         inputStream.close();
-
-
         //Test
         for(ExcelInputDataFormat format: ret) {
             if(format.getYBIndex().equals("工业主要经济指标_工业增加值(生产法)_总计"))
