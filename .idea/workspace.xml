@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d195d5c-2ff6-4c18-ab1e-d014f0a03e6c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Classifier4J_0_6.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/CoreIndexSearcher.java" afterPath="$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/CoreIndexSearcher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataLoader.iml" afterPath="$PROJECT_DIR$/DataLoader.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/DataLoader_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/DataLoader_war.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/DataLoader_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/DataLoader_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DataLoader.iws" />
@@ -34,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainPage.jsp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MainPage.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32934132" vertical-offset="330" max-vertical-offset="4202">
-              <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+            <state vertical-scroll-proportion="-6.387097" vertical-offset="330" max-vertical-offset="4202">
+              <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -96,14 +91,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoreIndexSearcher.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CoreIndexSearcher.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/CoreIndexSearcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1202" max-vertical-offset="2772">
-              <caret line="66" column="51" selection-start-line="66" selection-start-column="51" selection-end-line="66" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.7219101" vertical-offset="1862" max-vertical-offset="2772">
+              <caret line="108" column="45" selection-start-line="108" selection-start-column="45" selection-end-line="108" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2904#2912#0" expanded="true" />
+                <element signature="e#2900#2908#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -177,8 +172,8 @@
         <option value="$PROJECT_DIR$/src/main/java/caup/dataloader/controller/SearchIndexController.java" />
         <option value="$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/DataReader.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/CoreIndexSearcher.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/CoreIndexSearcher.java" />
       </list>
     </option>
   </component>
@@ -1064,7 +1059,7 @@
       <workItem from="1428653155128" duration="4008000" />
       <workItem from="1429078416948" duration="7609000" />
       <workItem from="1429106456848" duration="4991000" />
-      <workItem from="1429157887973" duration="4541000" />
+      <workItem from="1429157887973" duration="4690000" />
     </task>
     <task id="LOCAL-00001" summary="Archetype with Spring 4.0.6 + Hibernate 4.2.2&#10;&#10;Database connection Established">
       <created>1426940926522</created>
@@ -1150,11 +1145,15 @@
       <created>1429101710715</created>
       <updated>1429101710715</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Demo 0.5&#10;&#10;Color the selection box">
+      <created>1429164969581</created>
+      <updated>1429164969581</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="220985000" />
+    <option name="totallyTimeSpent" value="221134000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1592" y="-8" width="1936" height="1096" extended-state="6" />
@@ -1224,7 +1223,8 @@
     <MESSAGE value="Demo 0.4&#10;&#10;Input with multiple-year indexes supported" />
     <MESSAGE value="Demo 0.4&#10;&#10;Fix some file name bugs.&#10;Extract a class for string processing" />
     <MESSAGE value="Demo 0.4&#10;&#10;Extend the permitted size for uploading files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Demo 0.4&#10;&#10;Extend the permitted size for uploading files" />
+    <MESSAGE value="Demo 0.5&#10;&#10;Color the selection box" />
+    <option name="LAST_COMMIT_MESSAGE" value="Demo 0.5&#10;&#10;Color the selection box" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1653,22 +1653,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/CoreIndexSearcher.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1202" max-vertical-offset="2772">
-          <caret line="66" column="51" selection-start-line="66" selection-start-column="51" selection-end-line="66" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2904#2912#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-6.387097" vertical-offset="330" max-vertical-offset="4202">
+          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/MainPage.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/transformer/reader/CoreIndexSearcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32934132" vertical-offset="330" max-vertical-offset="4202">
-          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
-          <folding />
+        <state vertical-scroll-proportion="0.7219101" vertical-offset="1862" max-vertical-offset="2772">
+          <caret line="108" column="45" selection-start-line="108" selection-start-column="45" selection-end-line="108" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2900#2908#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

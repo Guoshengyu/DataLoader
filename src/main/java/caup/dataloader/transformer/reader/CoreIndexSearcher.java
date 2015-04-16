@@ -60,7 +60,7 @@ public class CoreIndexSearcher {
         DirectoryReader reader = DirectoryReader.open(indexDirectory);
         IndexSearcher searcher = new IndexSearcher(reader);
       //  searcher.setSimilarity(new S);
-        QueryParser queryParser = new QueryParser(Version.LUCENE_43, FIELD_NAME, new IKAnalyzer(true));
+        QueryParser queryParser = new QueryParser(Version.LUCENE_43, FIELD_NAME, new IKAnalyzer());
         Query query;
         query = safe_query_parser(queryParser, databaseIndex);
         TopDocs topDocs = searcher.search(query, TOP_SCORE_YEARBOOK_INDEX);
@@ -106,7 +106,7 @@ public class CoreIndexSearcher {
      */
     private Directory getLuceneIndexDirectory() throws IOException {
         RAMDirectory directory = new RAMDirectory();
-        IKAnalyzer analyzer = new IKAnalyzer(true);
+        IKAnalyzer analyzer = new IKAnalyzer();
         IndexWriterConfig iwc = new IndexWriterConfig(Version.LUCENE_43, analyzer);
         IndexWriter indexWriter = new IndexWriter(directory, iwc);
         for (String text : yearBookIndexList) {
