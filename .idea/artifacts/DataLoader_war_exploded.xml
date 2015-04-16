@@ -50,6 +50,7 @@
           <element id="library" level="project" name="Maven: commons-io:commons-io:2.2" />
           <element id="library" level="project" name="sqljdbc4" />
           <element id="library" level="project" name="IKAnalyzer2012FF_u1" />
+          <element id="library" level="project" name="Classifier4J-0.6" />
         </element>
       </element>
     </root>

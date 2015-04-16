@@ -1,5 +1,8 @@
 package caup.dataloader.transformer.reader;
 
+import net.sf.classifier4J.vector.HashMapTermVectorStorage;
+import net.sf.classifier4J.vector.TermVectorStorage;
+import net.sf.classifier4J.vector.VectorClassifier;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.TextField;
@@ -56,7 +59,8 @@ public class CoreIndexSearcher {
         Directory indexDirectory = getLuceneIndexDirectory();
         DirectoryReader reader = DirectoryReader.open(indexDirectory);
         IndexSearcher searcher = new IndexSearcher(reader);
-        QueryParser queryParser = new QueryParser(Version.LUCENE_43, FIELD_NAME, new IKAnalyzer());
+      //  searcher.setSimilarity(new S);
+        QueryParser queryParser = new QueryParser(Version.LUCENE_43, FIELD_NAME, new IKAnalyzer(true));
         Query query;
         query = safe_query_parser(queryParser, databaseIndex);
         TopDocs topDocs = searcher.search(query, TOP_SCORE_YEARBOOK_INDEX);
@@ -66,6 +70,13 @@ public class CoreIndexSearcher {
             ret.add(document.getField(FIELD_NAME).stringValue());
 
         }
+        return ret;
+    }
+
+    public List<String> getTopYearbookIndexNew() throws Exception{
+        List<String> ret = new ArrayList<String>();
+        TermVectorStorage storage = new HashMapTermVectorStorage();
+        VectorClassifier vc = new VectorClassifier(storage);
         return ret;
     }
 
@@ -95,7 +106,7 @@ public class CoreIndexSearcher {
      */
     private Directory getLuceneIndexDirectory() throws IOException {
         RAMDirectory directory = new RAMDirectory();
-        IKAnalyzer analyzer = new IKAnalyzer();
+        IKAnalyzer analyzer = new IKAnalyzer(true);
         IndexWriterConfig iwc = new IndexWriterConfig(Version.LUCENE_43, analyzer);
         IndexWriter indexWriter = new IndexWriter(directory, iwc);
         for (String text : yearBookIndexList) {

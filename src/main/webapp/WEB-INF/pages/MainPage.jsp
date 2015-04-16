@@ -23,7 +23,7 @@
 
 <div  style="text-align: center">
     <h1>CAUP Data Loader</h1>
-    <h3>Demo 0.4</h3>
+    <h3>Demo 0.5</h3>
 </div>
 
 <div style="text-align: center">
@@ -66,16 +66,17 @@
             $("#search-indicator").html("");
             $.each(searchResultList.IndexList, function (index, item) {
                 //Selection Tag Start
-                $("#search-indicator").append("<tr> <td>" + (index+1) + " " + item.Region + "  " + item.DBIndex + " " + item.DBUnit + "</td> <td><select id = \"search-result-selection-" + index + "\">");
+                $("#search-indicator").append("<tr> <td>" + (index+1) + " " + item.Region + "  " + item.DBIndex + " " +
+                        item.DBUnit + "</td> <td><select onchange=selectBoxChangeColor(" + index + ") id = \"search-result-selection-" + index + "\">");
+                var selectorObj = document.getElementById("search-result-selection-" + index);
                 if(item.ybIndexList.length > 0){
                     hitCount++;
                 }
-
                 $.each(item.ybIndexList, function (index1, item1) {
                     //Add selector options
-                    var selectorObj = document.getElementById("search-result-selection-" + index);
+                    selectorObj = document.getElementById("search-result-selection-" + index);
                     selectorObj.options.add(new Option(item1.ybIndex + " | 单位：" + item1.ybUnit, index1));
-                    selectorObj.options[0].selected = true;
+                    //selectorObj.options[0].selected = true;
                     if (index1 == item.ybIndexList.length - 1) {
                         selectorObj.options.add(new Option("没有选项"));
                     }
@@ -94,6 +95,15 @@
 
     }
 
+    function selectBoxChangeColor(index){
+        var selectorObj = document.getElementById("search-result-selection-" + index);
+        var option = selectorObj.options[selectorObj.selectedIndex];
+        if (option != null && option.text != "没有选项" && option.text != "") {
+            selectorObj.style.color = "#ff0000";
+        } else{
+            selectorObj.style.color = "#000000"
+        }
+    }
     function getSelectionList() {
         var tempSelectionList = [];
         for (var i = 0; i != indexCount; i++) {
