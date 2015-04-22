@@ -1,7 +1,6 @@
 package caup.dataloader.controller;
 
-import caup.dataloader.transformer.reader.DataWriter;
-import caup.dataloader.util.StringUtils;
+import caup.dataloader.file.io.DataWriter;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

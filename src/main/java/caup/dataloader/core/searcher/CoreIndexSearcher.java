@@ -1,4 +1,4 @@
-package caup.dataloader.transformer.reader;
+package caup.dataloader.core.searcher;
 
 import net.sf.classifier4J.vector.HashMapTermVectorStorage;
 import net.sf.classifier4J.vector.TermVectorStorage;
@@ -15,6 +15,8 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
+import org.apache.lucene.search.similarities.DefaultSimilarity;
+import org.apache.lucene.search.similarities.Similarity;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
 import org.apache.lucene.util.Version;
@@ -59,7 +61,11 @@ public class CoreIndexSearcher {
         Directory indexDirectory = getLuceneIndexDirectory();
         DirectoryReader reader = DirectoryReader.open(indexDirectory);
         IndexSearcher searcher = new IndexSearcher(reader);
-      //  searcher.setSimilarity(new S);
+        Similarity sim = new DefaultSimilarity(){
+            @Override
+            public float idf(long docFreq,long numDocs){return 1.0f;}
+        };
+        searcher.setSimilarity(sim);
         QueryParser queryParser = new QueryParser(Version.LUCENE_43, FIELD_NAME, new IKAnalyzer());
         Query query;
         query = safe_query_parser(queryParser, databaseIndex);
@@ -68,7 +74,6 @@ public class CoreIndexSearcher {
         for (ScoreDoc match : topDocs.scoreDocs) {
             Document document = searcher.doc(match.doc);
             ret.add(document.getField(FIELD_NAME).stringValue());
-
         }
         return ret;
     }

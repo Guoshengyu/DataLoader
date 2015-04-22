@@ -1,6 +1,4 @@
-package caup.dataloader.transformer.reader.DataModel;
-
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
+package caup.dataloader.core.searcher.DataModel;
 
 /**
  * Created by Richard on 2015/03/31 .

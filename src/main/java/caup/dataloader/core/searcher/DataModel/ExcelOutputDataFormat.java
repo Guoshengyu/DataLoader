@@ -1,14 +1,14 @@
-package caup.dataloader.transformer.reader.DataModel;
+package caup.dataloader.core.searcher.DataModel;
 
 import java.util.Map;
 
 /**
  * Created by Richard on 2015/03/23 .
  */
-public class ExcelInputDataFormat {
+public class ExcelOutputDataFormat {
     String region;
-    String YBIndex;
-    String unit;
+    String DBIndex;
+//    String unit;
     Map<String, Double> yValueMap;
 
     public String getRegion() {
@@ -19,20 +19,12 @@ public class ExcelInputDataFormat {
         this.region = region;
     }
 
-    public String getYBIndex() {
-        return YBIndex;
+    public String getDBIndex() {
+        return DBIndex;
     }
 
-    public void setYBIndex(String YBIndex) {
-        this.YBIndex = YBIndex;
-    }
-
-    public String getUnit() {
-        return unit;
-    }
-
-    public void setUnit(String unit) {
-        this.unit = unit;
+    public void setDBIndex(String DBIndex) {
+        this.DBIndex = DBIndex;
     }
 
     public Map<String, Double> getyValueMap() {

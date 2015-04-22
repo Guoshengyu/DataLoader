@@ -2,10 +2,11 @@ package caup.dataloader.controller;
 
 import caup.dataloader.entity.DimIndicator3Entity;
 import caup.dataloader.service.SelectionService;
-import caup.dataloader.transformer.reader.CoreIndexSearcher;
-import caup.dataloader.transformer.reader.DataModel.ExcelInputDataFormat;
-import caup.dataloader.transformer.reader.DataModel.SelectionDataFormat;
-import caup.dataloader.transformer.reader.DataReader;
+import caup.dataloader.core.searcher.CoreIndexSearcher;
+import caup.dataloader.core.searcher.DataModel.ExcelInputDataFormat;
+import caup.dataloader.core.searcher.DataModel.SelectionDataFormat;
+import caup.dataloader.file.io.DataReader;
+import caup.dataloader.unit.transformation.SearchResultSorter;
 import caup.dataloader.util.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,10 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Richard on 2015/03/27 .
@@ -68,15 +66,23 @@ public class SearchIndexController {
 
     private void searchForAllIndex(List<SelectionDataFormat> ret, List<DimIndicator3Entity> dimIndicator3EntityList, List<ExcelInputDataFormat> excelInputDataFormatList, Map<String, String> orgIndexMap) throws Exception {
         SelectionDataFormat selectionDataFormat;
+        String DBUnit;
    //     for(int i = 0; i != 30; i++) {
         for(int i = 0; i != dimIndicator3EntityList.size(); ++i){
-            CoreIndexSearcher coreIndexSearcher = new CoreIndexSearcher(dimIndicator3EntityList.get(i).getIndexName().trim(), new ArrayList<String>(orgIndexMap.keySet()));
+            String DBIndex = dimIndicator3EntityList.get(i).getIndexName().trim();
+            if(dimIndicator3EntityList.get(i).getUnit() != null)
+                DBUnit = dimIndicator3EntityList.get(i).getUnit().trim();
+            else
+                DBUnit = "NULL";
+            CoreIndexSearcher coreIndexSearcher = new CoreIndexSearcher(DBIndex, new ArrayList<String>(orgIndexMap.keySet()));
             List<String> result = coreIndexSearcher.getTopYearbookIndex();
             // System.out.println(dimIndicator3EntityList.get(i).getYBIndex());
-            Map<String, String> map =new HashMap<String, String>();
+            Map<String, String> map =new LinkedHashMap<String, String>();
             for(String str: result){
                 map.put(orgIndexMap.get(str), searchFromInputDataModel(excelInputDataFormatList,orgIndexMap.get(str)).getUnit());
             }
+            SearchResultSorter sorter = new SearchResultSorter();
+            map = sorter.sortSelectionFormatByUnit(map, DBUnit);
             selectionDataFormat = new SelectionDataFormat();
             selectionDataFormat.setDatabaseIndex(dimIndicator3EntityList.get(i).getIndexName());
             selectionDataFormat.setDatabaseUnit(dimIndicator3EntityList.get(i).getUnit());

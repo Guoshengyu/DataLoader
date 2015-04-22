@@ -1,8 +1,8 @@
-package caup.dataloader.transformer.reader;
+package caup.dataloader.file.io;
 
-import caup.dataloader.transformer.reader.DataModel.ExcelInputDataFormat;
-import caup.dataloader.transformer.reader.DataModel.ExcelOutputDataFormat;
-import caup.dataloader.transformer.reader.DataModel.SelectionResultFormat;
+import caup.dataloader.core.searcher.DataModel.ExcelInputDataFormat;
+import caup.dataloader.core.searcher.DataModel.ExcelOutputDataFormat;
+import caup.dataloader.core.searcher.DataModel.SelectionResultFormat;
 import caup.dataloader.util.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;

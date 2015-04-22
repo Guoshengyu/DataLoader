@@ -1,6 +1,5 @@
-package caup.dataloader.transformer.reader.DataModel;
+package caup.dataloader.core.searcher.DataModel;
 
-import java.util.List;
 import java.util.Map;
 
 /**
