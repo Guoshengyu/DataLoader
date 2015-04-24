@@ -1,5 +1,10 @@
 package caup.dataloader.unit.transformation;
 
+import caup.dataloader.unit.transformation.model.ComplexUnit;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Richard on 2015/04/22 .
  */
@@ -13,5 +18,23 @@ public final class UnitUtils {
                 return true;
         }
         return false;
+    }
+
+    /*
+     * Exclude prefixes like 千，万...
+     */
+    public static String excludePrefix(String unit){
+
+    }
+
+    public static multiplierOfPrefix()
+    public static boolean isSimpleUnit(String unit){
+
+    }
+
+    public static ComplexUnit getComplexUnit(String unit){
+        ComplexUnit ret = new ComplexUnit();
+
+        return ret;
     }
 }

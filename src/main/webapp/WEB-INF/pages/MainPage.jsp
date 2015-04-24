@@ -67,7 +67,7 @@
             $.each(searchResultList.IndexList, function (index, item) {
                 //Selection Tag Start
                 $("#search-indicator").append("<tr> <td>" + (index+1) + " " + item.Region + "  " + item.DBIndex + " " +
-                        item.DBUnit + "</td> <td><select onchange=selectBoxChangeColor(" + index + ") id = \"search-result-selection-" + index + "\">");
+                        item.DBUnit + "</td> <td><select onblur=selectBoxChangeColor(" + index + ") id = \"search-result-selection-" + index + "\">");
                 var selectorObj = document.getElementById("search-result-selection-" + index);
                 if(item.ybIndexList.length > 0){
                     hitCount++;
