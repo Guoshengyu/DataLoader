@@ -89,8 +89,8 @@ public class SearchIndexController {
             selectionDataFormat.setYearbookIndexUnitMap(map);
 
             System.out.println(dimIndicator3EntityList.get(i).getIndexName());
-            for(String str: result)
-                System.out.print(orgIndexMap.get(str) + " | ");
+            for(String str: map.keySet())
+                System.out.print(str + "," + map.get(str) + " | ");
             System.out.println();
             System.out.println("------");
             ret.add(selectionDataFormat);

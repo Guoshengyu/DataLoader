@@ -3,6 +3,8 @@ package caup.dataloader.file.io;
 import caup.dataloader.core.searcher.DataModel.ExcelInputDataFormat;
 import caup.dataloader.core.searcher.DataModel.ExcelOutputDataFormat;
 import caup.dataloader.core.searcher.DataModel.SelectionResultFormat;
+import caup.dataloader.unit.transformation.UnitAdapter;
+import caup.dataloader.unit.transformation.UnitDictonary;
 import caup.dataloader.util.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -26,7 +28,8 @@ public class DataWriter {
         List<SelectionResultFormat> resultFormat = getResultFormat(strJsonResult);
         System.out.println(resultFormat.toString());
         File file = new File(StringUtils.downloadFileNameProcess(fileRealPath));
-
+        UnitDictonary.Initialize();
+        UnitAdapter adapter = new UnitAdapter();
         try {
             //The number below doesn't make sense
             DataReader reader = new DataReader(fileRealPath, 1, 100, 2, true);
@@ -41,12 +44,7 @@ public class DataWriter {
                 Map<String, Double> resultMap = new TreeMap<String, Double>();
                 excelOutputDataFormat.setDBIndex(selectionResultFormat.getDBIndex());
                 List<ExcelInputDataFormat> searchResult = searchForYBNew(selectionResultFormat.getYBIndex(), excelInputDataFormatList);
-                //Test
-                if (selectionResultFormat.getYBIndex().equals("工业主要经济指标_工业增加值(生产法)_总计")) {
-                    searchResult.get(0).getyValueMap();
-                }
 
-                //~Test
                 for (ExcelInputDataFormat format : searchResult) {
                     for (Map.Entry<String, Double> entry : format.getyValueMap().entrySet())
                         resultMap.put(entry.getKey(), entry.getValue());
@@ -70,10 +68,14 @@ public class DataWriter {
                 int columnIndex = 1;
                 for (String header : headerList) {
                     Cell newCell = newRow.createCell(columnIndex++);
-                    if (excelInputDataFormat.getyValueMap() != null && excelInputDataFormat.getyValueMap().containsKey(header))
-                        newCell.setCellValue(excelInputDataFormat.getyValueMap().get(header));
-                    else
+                    if (excelInputDataFormat.getyValueMap() != null && excelInputDataFormat.getyValueMap().containsKey(header)) {
+                        Double oldValue = excelInputDataFormat.getyValueMap().get(header);
+                        Double newValue = adapter.getTransformResult(oldValue, resultFormat.get(rowIndex - 1).getDBUnit(), excelInputDataFormat.getUnit());
+                        newCell.setCellValue(newValue);
+                    }
+                    else {
                         newCell.setCellValue(0.0);
+                    }
                 }
             }
             OutputStream outputStream = new FileOutputStream(file);
@@ -110,10 +112,12 @@ public class DataWriter {
                 int columnIndex = 1;
                 for (String header : headerList) {
                     Cell newCell = newRow.createCell(columnIndex++);
-                    if (excelInputDataFormat.getyValueMap() != null && excelInputDataFormat.getyValueMap().containsKey(header))
+                    if (excelInputDataFormat.getyValueMap() != null && excelInputDataFormat.getyValueMap().containsKey(header)) {
                         newCell.setCellValue(excelInputDataFormat.getyValueMap().get(header));
-                    else
+                    }
+                    else {
                         newCell.setCellValue(0.0);
+                    }
                 }
             }
             OutputStream outputStream = new FileOutputStream(file);

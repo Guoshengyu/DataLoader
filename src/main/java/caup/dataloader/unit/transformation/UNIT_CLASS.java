@@ -17,5 +17,6 @@ public enum UNIT_CLASS {
     Publish_LING,
     Power_WA,
     Temperature_SHESHIDU,
+    Comeplex_Unit,
     Na
 }

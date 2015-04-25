@@ -32,7 +32,7 @@ import java.util.List;
  */
 public class CoreIndexSearcher {
 
-    static int TOP_SCORE_YEARBOOK_INDEX = 15;
+    static int TOP_SCORE_YEARBOOK_INDEX = 20;
     static String FIELD_NAME = "index-name";
     List<String> yearBookIndexList;
     String databaseIndex;

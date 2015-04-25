@@ -10,30 +10,15 @@ import java.util.Map;
  */
 public final class UnitUtils {
 
-    public static boolean isSameKindUnit(String unit1, String unit2){
-        if(unit1 == null || unit2 == null || unit1.toLowerCase().equals("null") || unit2.toLowerCase().equals("null"))
-            return false;
-        for (int i = 0; i != unit1.length(); ++i){
-            if (unit2.indexOf(unit1.charAt(i)) != -1)
-                return true;
-        }
-        return false;
+    public static boolean isComplexUnit(String unit) {
+        return unit.contains("/");
     }
 
-    /*
-     * Exclude prefixes like 千，万...
-     */
-    public static String excludePrefix(String unit){
-
-    }
-
-    public static multiplierOfPrefix()
-    public static boolean isSimpleUnit(String unit){
-
-    }
 
     public static ComplexUnit getComplexUnit(String unit){
         ComplexUnit ret = new ComplexUnit();
+        ret.setUnitPart1(unit.substring(0, unit.indexOf("/")));
+        ret.setUnitPart2(unit.substring(unit.indexOf("/") + 1, unit.length()));
 
         return ret;
     }

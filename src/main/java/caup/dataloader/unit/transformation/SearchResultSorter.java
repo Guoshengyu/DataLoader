@@ -14,9 +14,12 @@ public class SearchResultSorter {
 
     public Map<String, String> sortSelectionFormatByUnit(Map<String, String> yearbookIndexUnitMap, String DBUnit){
         Map<String, String> ret = new LinkedHashMap<String, String>();
+        UnitDictonary.Initialize();
+        UnitClassifer classifer = new UnitClassifer();
         for(String ybIndex: yearbookIndexUnitMap.keySet()){
             String ybUnit = yearbookIndexUnitMap.get(ybIndex);
-            if(UnitUtils.isSameKindUnit(ybUnit, DBUnit))
+
+            if(classifer.isSameKindUnit(ybUnit, DBUnit))
                 ret.put(ybIndex, ybUnit);
         }
         for(String ybIndex: yearbookIndexUnitMap.keySet()){
