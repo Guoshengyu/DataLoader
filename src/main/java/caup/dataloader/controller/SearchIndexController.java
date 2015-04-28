@@ -7,6 +7,7 @@ import caup.dataloader.core.searcher.DataModel.ExcelInputDataFormat;
 import caup.dataloader.core.searcher.DataModel.SelectionDataFormat;
 import caup.dataloader.file.io.DataReader;
 import caup.dataloader.unit.transformation.SearchResultSorter;
+import caup.dataloader.unit.transformation.UnitDictonary;
 import caup.dataloader.util.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -39,6 +40,8 @@ public class SearchIndexController {
         List<DimIndicator3Entity> dimIndicator3EntityList = selectionService.getIndicator().getData();
         try {
             String realPath = request.getSession().getServletContext().getRealPath("/upload/");
+            String unitDicPath = request.getSession().getServletContext().getRealPath("/datafile/");
+            UnitDictonary.Initialize(unitDicPath +File.separator + "Unit_Dictionary.xlsx");
             DataReader reader = new DataReader(realPath + File.separator +fileName, 1, 100, 2, true);
             List<ExcelInputDataFormat> excelInputDataFormatList = reader.getYearBookIndexListNew();
 

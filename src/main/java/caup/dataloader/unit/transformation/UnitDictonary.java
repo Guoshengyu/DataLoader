@@ -2,7 +2,11 @@ package caup.dataloader.unit.transformation;
 
 import caup.dataloader.unit.transformation.model.UnitElement;
 import org.apache.poi.ss.usermodel.*;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.web.context.support.ServletContextResource;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -22,12 +26,16 @@ public class UnitDictonary {
 
 
 
-    public static void Initialize() {
+    public static void Initialize(String dictionaryPath) {
         if (UnitDictonary.dictionary.size() != 0 && UnitDictonary.prefixDictionary.size() != 0)
             return;
         try {
-            String dicPath = "P:/Unit_Dictionary.xlsx";
-            InputStream inputStream = new FileInputStream(dicPath);
+          //  String dicPath =
+        //    Resource resource = new ClassPathResource("/src/main/webapp/datafile/Unit_Dictionary.xlsx");
+       //     System.out.println(System.getProperty("user.dir"));
+       //    // String dicPath = "/main/webapp/datafile/UnitDictionary.xlsx";
+           InputStream inputStream = new FileInputStream(dictionaryPath);
+        //    InputStream inputStream = resource.getInputStream();
             Workbook workbook = WorkbookFactory.create(inputStream);
             generateDictionary(workbook);
             generatePrefixDictionary(workbook);
@@ -37,10 +45,10 @@ public class UnitDictonary {
         }
     }
 
-    public static void refresh() {
+    public static void refresh(String dictionaryPath) {
         UnitDictonary.dictionary = new HashMap<UNIT_CLASS, List<UnitElement>>();
         UnitDictonary.prefixDictionary = new HashMap<String, Double>();
-        UnitDictonary.Initialize();
+        UnitDictonary.Initialize(dictionaryPath);
     }
     public static Map<UNIT_CLASS, List<UnitElement>> getDictionary() {
         return UnitDictonary.dictionary;

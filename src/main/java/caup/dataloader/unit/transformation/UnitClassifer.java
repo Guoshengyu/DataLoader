@@ -14,13 +14,13 @@ public class UnitClassifer {
 
     public static void main(String[] args) {
      //   UnitDictonary unitDictonary = new UnitDictonary();
-        UnitDictonary.Initialize();
+       // UnitDictonary.Initialize();
         UnitClassifer classifer = new UnitClassifer();
        UnitElement element = classifer.getUnitInformation("小时");
 
         System.out.println(element.getUnit() + " | " + element.getValue());
 
-        UnitDictonary.Initialize();
+      //  UnitDictonary.Initialize();
         UnitAdapter adapter = new UnitAdapter();
         System.out.println(adapter.getTransformResult(1.0, "千米/分", "米/小时"));
         System.out.println(classifer.getUnitClass("亿元"));

@@ -28,7 +28,7 @@ public class DataWriter {
         List<SelectionResultFormat> resultFormat = getResultFormat(strJsonResult);
         System.out.println(resultFormat.toString());
         File file = new File(StringUtils.downloadFileNameProcess(fileRealPath));
-        UnitDictonary.Initialize();
+      //  UnitDictonary.Initialize();
         UnitAdapter adapter = new UnitAdapter();
         try {
             //The number below doesn't make sense
