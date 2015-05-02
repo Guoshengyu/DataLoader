@@ -1,6 +1,7 @@
 package caup.dataloader.unit.transformation;
 
 import caup.dataloader.unit.transformation.model.ComplexUnit;
+import caup.dataloader.util.UnitUtils;
 
 /**
  * Created by Richard on 2015/04/24 .

@@ -30,11 +30,7 @@ public class UnitDictonary {
         if (UnitDictonary.dictionary.size() != 0 && UnitDictonary.prefixDictionary.size() != 0)
             return;
         try {
-          //  String dicPath =
-        //    Resource resource = new ClassPathResource("/src/main/webapp/datafile/Unit_Dictionary.xlsx");
-       //     System.out.println(System.getProperty("user.dir"));
-       //    // String dicPath = "/main/webapp/datafile/UnitDictionary.xlsx";
-           InputStream inputStream = new FileInputStream(dictionaryPath);
+               InputStream inputStream = new FileInputStream(dictionaryPath);
         //    InputStream inputStream = resource.getInputStream();
             Workbook workbook = WorkbookFactory.create(inputStream);
             generateDictionary(workbook);

@@ -1,11 +1,8 @@
 package caup.dataloader.unit.transformation;
 
-import caup.dataloader.core.searcher.DataModel.SelectionDataFormat;
-
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * Created by Richard on 2015/04/22 .

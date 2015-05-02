@@ -20,13 +20,24 @@
 
 </head>
 <body>
-
+<style>
+    .textStyle {font-family: Georgia; font-size: 16px;}
+</style>
 <div  style="text-align: center">
     <h1>CAUP Data Loader</h1>
-    <h3>Demo 0.8</h3>
+    <h3>Demo 0.9</h3>
 </div>
 
 <div style="text-align: center">
+    <select id="cityNameSelector" class="textStyle">
+        <option value ="嘉兴">嘉兴</option>
+        <option value ="杭州">杭州</option>
+    </select>
+    <select id="cityRegion" class="textStyle">
+        <option value ="全市">全市</option>
+        <option value ="市区">市区</option>
+    </select>
+    <br>
     <%--<form id = "file-upload-form"   enctype="multipart/form-data">--%>
     <input type="file" name="myFiles" id="upload-file"/>
     <button class="btn" onclick="ajaxFileUpload()">Upload</button>
@@ -35,7 +46,7 @@
     <label id="process-condition" style="font-family: Georgia"></label>
 </div>
 <div style="text-align: center">
-    <table id="search-indicator" border="1" style="font-family: Georgia; font-size: 16px">
+    <table id="search-indicator" border="1" class="textStyle">
     </table>
     <button class="btn" onclick="generateSelectionResultJson()">Confirm & Download</button>
     <%--<button class="btn" onclick="downloadFile()">Download</button>--%>
@@ -51,6 +62,7 @@
     var selectionResultJson;
     var fileName;
     var downloadFilePath;
+    var regionInfo;
 
     function getSearchResultList() {
         $("#process-condition").html("Processing..");
@@ -106,6 +118,9 @@
     }
     function getSelectionList() {
         var tempSelectionList = [];
+        var nameSelectorObj = document.getElementById("cityNameSelector");
+        var regionSelectorObj = document.getElementById("cityRegion");
+        regionInfo = nameSelectorObj.options[nameSelectorObj.selectedIndex].text + "-" + regionSelectorObj.options[regionSelectorObj.selectedIndex].text;
         for (var i = 0; i != indexCount; i++) {
             var selectorObj = document.getElementById("search-result-selection-" + i);
             var option = selectorObj.options[selectorObj.selectedIndex];
@@ -123,7 +138,7 @@
 
         $.ajax({
             type: "POST",
-            url: "generateResult/writeResult?fileName=" + fileName,
+            url: "generateResult/writeResult?fileName=" + fileName + "&region=" + regionInfo,
             contentType: "application/json; charset=utf-8",
             dataType: "application/json",
             data: JSON.stringify(obj),

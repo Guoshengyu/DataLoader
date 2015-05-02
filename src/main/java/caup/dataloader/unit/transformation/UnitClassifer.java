@@ -3,6 +3,7 @@ package caup.dataloader.unit.transformation;
 
 import caup.dataloader.unit.transformation.model.ComplexUnit;
 import caup.dataloader.unit.transformation.model.UnitElement;
+import caup.dataloader.util.UnitUtils;
 
 import java.util.List;
 import java.util.Map;
