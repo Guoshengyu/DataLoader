@@ -44,14 +44,15 @@ public class ResultSetWriter {
             Cell cell0 = row.getCell(0);
             String currentDBIndex = cell0.getStringCellValue();
             String currentYBIndex = searchInSelectionResult(selectionResultList, currentDBIndex);
+            if(currentYBIndex.trim().toUpperCase().equals("NULL"))
+                return;
             for(int columnIndex = 1; columnIndex <= row.getLastCellNum(); ++ columnIndex){
                 Cell cell = row.getCell(columnIndex);
                 if (cell == null)
                     continue;
                 String historyYBIndex = cell.getStringCellValue();
-                if(historyYBIndex.equals(currentYBIndex))
+                if(historyYBIndex.equals(currentYBIndex) )
                     break;
-                int temp = row.getLastCellNum();
                 if(columnIndex + 1 == row.getLastCellNum() && !historyYBIndex.equals(currentYBIndex)){
                     Cell newCell = row.createCell(++columnIndex);
                     newCell.setCellValue(currentYBIndex);
@@ -74,8 +75,11 @@ public class ResultSetWriter {
             Cell cell0 = newRow.createCell(0);
             SelectionResultFormat selectionResult = selectionResultList.get(rowIndex - 1);
             cell0.setCellValue(selectionResult.getDBIndex());
+            String currentYBIndex = selectionResult.getYBIndex();
+            if(currentYBIndex.trim().toUpperCase().equals("NULL"))
+                continue;
             Cell cell1 = newRow.createCell(1);
-            cell1.setCellValue(selectionResult.getYBIndex());
+            cell1.setCellValue(currentYBIndex);
         }
     }
 

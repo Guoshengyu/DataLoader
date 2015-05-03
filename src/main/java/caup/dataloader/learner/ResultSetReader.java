@@ -20,6 +20,15 @@ import java.util.List;
  */
 public class ResultSetReader {
 
+   public List<String> getHistoryYBSelectedIndex(String filePath, String region, String DBIndex){
+       List<ResultSetElement> resultSetElementList = getHistoryResultSet(filePath, region);
+        for(ResultSetElement element: resultSetElementList){
+            if(element.getDBIndex().equals(DBIndex))
+                return element.getYBIndexSelectionResultList();
+        }
+        return null;
+    }
+
     public List<String> getHistoryYBSelectedIndex(List<ResultSetElement> resultSetElementList, String DBIndex){
         for(ResultSetElement element: resultSetElementList){
             if(element.getDBIndex().equals(DBIndex))
@@ -27,6 +36,7 @@ public class ResultSetReader {
         }
         return null;
     }
+
     public List<ResultSetElement> getHistoryResultSet(String filePath, String region){
         List<ResultSetElement> ret = new ArrayList<ResultSetElement>();
         try{

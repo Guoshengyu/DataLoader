@@ -1,6 +1,9 @@
 package caup.dataloader.controller;
 
 import caup.dataloader.entity.DimIndicator3Entity;
+import caup.dataloader.learner.ResultSetReader;
+import caup.dataloader.learner.model.ResultSetElement;
+import caup.dataloader.searcher.IndexDirectoryGenerator;
 import caup.dataloader.service.SelectionService;
 import caup.dataloader.searcher.CoreIndexSearcher;
 import caup.dataloader.datafile.processer.model.ExcelInputDataFormat;
@@ -9,6 +12,7 @@ import caup.dataloader.datafile.processer.DataReader;
 import caup.dataloader.unit.transformation.SearchResultSorter;
 import caup.dataloader.unit.transformation.UnitDictonary;
 import caup.dataloader.util.StringUtils;
+import org.apache.lucene.store.Directory;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 /**
@@ -31,18 +36,27 @@ public class SearchIndexController {
     @Autowired
     SelectionService selectionService;
 
+    String dataDirPath;
+    String uploadDirPath;
+
     @RequestMapping(value = "/getResult",
             produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String getLuceneSeachResult(@RequestParam("fileName") String fileName, HttpServletRequest request){
+    public String getLuceneSearchResult(@RequestParam("fileName") String fileName, @RequestParam("region") String region, HttpServletRequest request){
         List<SelectionDataFormat> ret = new ArrayList<SelectionDataFormat>();
         SelectionDataFormat selectionDataFormat = null;
         List<DimIndicator3Entity> dimIndicator3EntityList = selectionService.getIndicator().getData();
         try {
-            String realPath = request.getSession().getServletContext().getRealPath("/upload/");
-            String unitDicPath = request.getSession().getServletContext().getRealPath("/datafile/");
-            UnitDictonary.Initialize(unitDicPath +File.separator + "Unit_Dictionary.xlsx");
-            DataReader reader = new DataReader(realPath + File.separator +fileName, 1, 100, 2, true);
+            region = new String(region.getBytes("ISO-8859-1"), "UTF-8");
+        }catch (UnsupportedEncodingException e){
+            e.printStackTrace();
+        }
+
+        try {
+            uploadDirPath = request.getSession().getServletContext().getRealPath("/upload/");
+            dataDirPath = request.getSession().getServletContext().getRealPath("/datafile/");
+            UnitDictonary.Initialize(dataDirPath +File.separator + "Unit_Dictionary.xlsx");
+            DataReader reader = new DataReader(uploadDirPath + File.separator +fileName, 1, 100, 2, true);
             List<ExcelInputDataFormat> excelInputDataFormatList = reader.getYearBookIndexListNew();
 
             //Put the preprocessed data and the orginal data into map
@@ -50,7 +64,7 @@ public class SearchIndexController {
             for (ExcelInputDataFormat excelInputDataFormat : excelInputDataFormatList) {
                 orgIndexMap.put(StringUtils.yearbookIndexPreprocess(excelInputDataFormat.getYBIndex().replaceAll(" ", "")), excelInputDataFormat.getYBIndex().replaceAll(" ", ""));
             }
-            searchForAllIndex(ret, dimIndicator3EntityList, excelInputDataFormatList, orgIndexMap);
+            ret = searchForAllIndex(region, dimIndicator3EntityList, excelInputDataFormatList, orgIndexMap);
 
         }
         catch (IllegalStateException e){
@@ -67,17 +81,23 @@ public class SearchIndexController {
         return selectionDataConverToJson(ret).toString();
     }
 
-    private void searchForAllIndex(List<SelectionDataFormat> ret, List<DimIndicator3Entity> dimIndicator3EntityList, List<ExcelInputDataFormat> excelInputDataFormatList, Map<String, String> orgIndexMap) throws Exception {
+    private List<SelectionDataFormat> searchForAllIndex(String region, List<DimIndicator3Entity> dimIndicator3EntityList, List<ExcelInputDataFormat> excelInputDataFormatList, Map<String, String> orgIndexMap) throws Exception {
+        List<SelectionDataFormat> ret = new ArrayList<SelectionDataFormat>();
         SelectionDataFormat selectionDataFormat;
         String DBUnit;
-   //     for(int i = 0; i != 30; i++) {
+        Directory indexDirectory = IndexDirectoryGenerator.createIndexDirectory(new ArrayList<String>(orgIndexMap.keySet()));
+
+        String historyFilePath = dataDirPath + File.separator + "Result_Set.xlsx";
+        ResultSetReader resultSetReader = new ResultSetReader();
+        List<ResultSetElement> historyResult = resultSetReader.getHistoryResultSet(historyFilePath, region);
+        //     for(int i = 0; i != 30; i++) {
         for(int i = 0; i != dimIndicator3EntityList.size(); ++i){
             String DBIndex = dimIndicator3EntityList.get(i).getIndexName().trim();
             if(dimIndicator3EntityList.get(i).getUnit() != null)
                 DBUnit = dimIndicator3EntityList.get(i).getUnit().trim();
             else
                 DBUnit = "NULL";
-            CoreIndexSearcher coreIndexSearcher = new CoreIndexSearcher(DBIndex, new ArrayList<String>(orgIndexMap.keySet()));
+            CoreIndexSearcher coreIndexSearcher = new CoreIndexSearcher(indexDirectory, region, DBIndex, historyResult);
             List<String> result = coreIndexSearcher.getTopYearbookIndex();
             // System.out.println(dimIndicator3EntityList.get(i).getYBIndex());
             Map<String, String> map =new LinkedHashMap<String, String>();
@@ -98,6 +118,7 @@ public class SearchIndexController {
             System.out.println("------");
             ret.add(selectionDataFormat);
         }
+        return ret;
     }
 
     private ExcelInputDataFormat searchFromInputDataModel(List<ExcelInputDataFormat> excelInputDataFormatList, String yearbookIndex){

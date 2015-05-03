@@ -25,7 +25,7 @@
 </style>
 <div  style="text-align: center">
     <h1>CAUP Data Loader</h1>
-    <h3>Demo 0.9</h3>
+    <h3>Demo 1.0</h3>
 </div>
 
 <div style="text-align: center">
@@ -68,7 +68,8 @@
         $("#process-condition").html("Processing..");
         var startTime = new Date().getTime();
         var hitCount = 0;
-        $.get("searchIndex/getResult?fileName=" + fileName, function (data, status) {
+
+        $.get("searchIndex/getResult?fileName=" + fileName + "&region=" + regionInfo, function (data, status) {
             if (data == "fail"){
                 alert("FFF");
                 return;
@@ -78,8 +79,9 @@
             $("#search-indicator").html("");
             $.each(searchResultList.IndexList, function (index, item) {
                 //Selection Tag Start
-                $("#search-indicator").append("<tr> <td>" + (index+1) + " " + item.Region + "  " + item.DBIndex + " " +
-                        item.DBUnit + "</td> <td><select onblur=selectBoxChangeColor(" + index + ") id = \"search-result-selection-" + index + "\">");
+                $("#search-indicator").append("<tr> <td id=\"DB-index-" + index + "\">" + (index+1) + " " + item.Region + "  " + item.DBIndex + " " +
+                        item.DBUnit + "</td> <td><select  id = \"search-result-selection-" + index + "\" onblur=selectBoxChangeColor(" + index + ") " +
+                "onmousemove=lightElement(" + index + ")  onmouseout=delightElement(" + index + ")>");
                 var selectorObj = document.getElementById("search-result-selection-" + index);
                 if(item.ybIndexList.length > 0){
                     hitCount++;
@@ -107,6 +109,20 @@
 
     }
 
+    function lightElement(index){
+        var dbIndexObj = document.getElementById("DB-index-" + index);
+        var ybSelectorObj = document.getElementById("search-result-selection-" + index);
+        dbIndexObj.style.backgroundColor = "#FFFFCC";
+        ybSelectorObj.style.backgroundColor = "#FFFFCC";
+    }
+
+    function delightElement(index){
+        var dbIndexObj = document.getElementById("DB-index-" + index);
+        var ybSelectorObj = document.getElementById("search-result-selection-" + index);
+        dbIndexObj.style.backgroundColor = "#FFFFFF";
+        ybSelectorObj.style.backgroundColor = "#FFFFFF";
+    }
+
     function selectBoxChangeColor(index){
         var selectorObj = document.getElementById("search-result-selection-" + index);
         var option = selectorObj.options[selectorObj.selectedIndex];
@@ -118,10 +134,7 @@
     }
     function getSelectionList() {
         var tempSelectionList = [];
-        var nameSelectorObj = document.getElementById("cityNameSelector");
-        var regionSelectorObj = document.getElementById("cityRegion");
-        regionInfo = nameSelectorObj.options[nameSelectorObj.selectedIndex].text + "-" + regionSelectorObj.options[regionSelectorObj.selectedIndex].text;
-        for (var i = 0; i != indexCount; i++) {
+       for (var i = 0; i != indexCount; i++) {
             var selectorObj = document.getElementById("search-result-selection-" + i);
             var option = selectorObj.options[selectorObj.selectedIndex];
             if (option != null && option.text != "没有选项") {
@@ -171,6 +184,10 @@
 
     function ajaxFileUpload() {
         $("#search-indicator").html("");
+        var nameSelectorObj = document.getElementById("cityNameSelector");
+        var regionSelectorObj = document.getElementById("cityRegion");
+        regionInfo = nameSelectorObj.options[nameSelectorObj.selectedIndex].text + "-" + regionSelectorObj.options[regionSelectorObj.selectedIndex].text;
+
         $.ajaxFileUpload({
             //处理文件上传操作的服务器端地址(可以传参数,已亲测可用)
             url: "file/upload",
