@@ -57,7 +57,7 @@ public class CoreIndexSearcher {
             List<TopDocs> resultDocsList = new ArrayList<TopDocs>();
             resultDocsList.add(topDocs);
             for (String historyResult : historyList)
-                resultDocsList.add(getTopDocByHistoryResult(searcher, queryParser, historyResult));
+                resultDocsList.add(getTopDocByHistoryResult(searcher, queryParser, historyResult, historyList.size()));
             topScoreDocs = mergeSearchResult(searcher, resultDocsList);
         } else {
             topScoreDocs = Arrays.asList(topDocs.scoreDocs);
@@ -74,9 +74,9 @@ public class CoreIndexSearcher {
         Query query = safe_query_parser(queryParser, DBIndex);
         return searcher.search(query, TOP_SCORE_YEARBOOK_INDEX);
     }
-    private TopDocs getTopDocByHistoryResult(IndexSearcher searcher, QueryParser queryParser, String historyResult) throws  Exception{
+    private TopDocs getTopDocByHistoryResult(IndexSearcher searcher, QueryParser queryParser, String historyResult, int historyResultSize) throws  Exception{
         Query query = safe_query_parser(queryParser, historyResult);
-        return searcher.search(query, TOP_SCORE_YEARBOOK_INDEX / 2);
+        return searcher.search(query, (int)Math.ceil(TOP_SCORE_YEARBOOK_INDEX / (2 * historyResultSize)));
     }
     private List<ScoreDoc> mergeSearchResult(IndexSearcher searcher, List<TopDocs> results) throws  Exception{
         List<ScoreDoc> scoreDocList = new ArrayList<ScoreDoc>();

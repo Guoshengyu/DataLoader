@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d195d5c-2ff6-4c18-ab1e-d014f0a03e6c" name="Default" comment="Demo 0.9&#10;&#10;With history result reader and writer">
+    <list default="true" id="4d195d5c-2ff6-4c18-ab1e-d014f0a03e6c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/caup/dataloader/searcher/CoreIndexSearcher.java" afterPath="$PROJECT_DIR$/src/main/java/caup/dataloader/searcher/CoreIndexSearcher.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DataLoader.iws" />
@@ -32,7 +33,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/searcher/CoreIndexSearcher.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.6795005">
-              <caret line="145" column="46" selection-start-line="145" selection-start-column="46" selection-end-line="145" selection-end-column="46" />
+              <caret line="67" column="89" selection-start-line="67" selection-start-column="89" selection-end-line="67" selection-end-column="89" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,6 +99,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -257,6 +261,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -271,8 +277,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1207,7 +1211,8 @@
       <workItem from="1430530806429" duration="17703000" />
       <workItem from="1430631518145" duration="10829000" />
       <workItem from="1430645192026" duration="8271000" />
-      <workItem from="1430661681130" duration="15000" />
+      <workItem from="1430661681130" duration="278000" />
+      <workItem from="1430710128419" duration="297000" />
     </task>
     <task id="LOCAL-00001" summary="Archetype with Spring 4.0.6 + Hibernate 4.2.2&#10;&#10;Database connection Established">
       <created>1426940926522</created>
@@ -1383,15 +1388,21 @@
       <option name="project" value="LOCAL" />
       <updated>1430661291921</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Demo 1.0&#10;&#10;Full functionality">
+      <created>1430661723982</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1430661723982</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="308567000" />
+    <option name="totallyTimeSpent" value="309127000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="59" y="-8" width="1869" height="1096" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1461,7 +1472,8 @@
     <MESSAGE value="Demo 0.8&#10;&#10;Unit Transformation functionality supported" />
     <MESSAGE value="Demo 0.8&#10;&#10;Unit Dictionary URL supported" />
     <MESSAGE value="Demo 0.9&#10;&#10;With history result reader and writer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Demo 0.9&#10;&#10;With history result reader and writer" />
+    <MESSAGE value="Demo 1.0&#10;&#10;Full functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Demo 1.0&#10;&#10;Full functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1806,14 +1818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/controller/SearchIndexController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="99" column="118" selection-start-line="99" selection-start-column="118" selection-end-line="99" selection-end-column="118" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/learner/ResultSetReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1838,10 +1842,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/controller/SearchIndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="99" column="118" selection-start-line="99" selection-start-column="118" selection-end-line="99" selection-end-column="118" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/caup/dataloader/searcher/CoreIndexSearcher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6795005">
-          <caret line="145" column="46" selection-start-line="145" selection-start-column="46" selection-end-line="145" selection-end-column="46" />
+          <caret line="67" column="89" selection-start-line="67" selection-start-column="89" selection-end-line="67" selection-end-column="89" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
