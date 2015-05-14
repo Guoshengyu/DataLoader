@@ -38,6 +38,7 @@ public class DataWriter {
             XSSFWorkbook wb = new XSSFWorkbook();
             XSSFSheet sheet = wb.createSheet("result");
 
+           // List<ExcelInputDataFormat> readFileContent = reader.getYearBookIndexListNew();
             for (SelectionResultFormat selectionResultFormat : resultFormat) {
                 ExcelOutputDataFormat excelOutputDataFormat = new ExcelOutputDataFormat();
                 Map<String, Double> resultMap = new TreeMap<String, Double>();
@@ -54,9 +55,10 @@ public class DataWriter {
 
 
             //Create the first header row
-            Set<String> timeList = getAllKeysFromOutputFormats(excelOutputDataFormatList);
+            Set<String> timeList = new TreeSet<String>(getAllKeysFromOutputFormats(excelOutputDataFormatList));
+            //Collections.sort(timeList);
             List<String> headerList = new ArrayList<String>(createHeaderRowNew(timeList, sheet));
-            Collections.sort(headerList);
+
             //Create other rows
             for (int rowIndex = 1; rowIndex != resultFormat.size(); ++rowIndex) {
                 Row newRow = sheet.createRow(rowIndex);
